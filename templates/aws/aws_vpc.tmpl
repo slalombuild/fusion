@@ -1,0 +1,50 @@
+variable "initial_cidr_block" {
+  type    = string
+  default = {{ quote .CidrBlock }}
+}
+
+variable "az_count" {
+  type    = number
+  default = {{ .AzCount }}
+}
+
+variable "subnet_capacity" {
+  type    = number
+  default = {{ .SubnetCapacity }}
+}
+
+variable "vpc_name" {
+  type    = string
+  default = "fusion-vpc"
+}
+
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
+locals {
+  azRange             = range(0, var.az_count)
+  azs                 = data.aws_availability_zones.available.names
+  mask_shift          = 32 - ceil(log(var.subnet_capacity, 2)) - parseint(split("/", var.initial_cidr_block)[1], 10)
+  public_cidr_blocks  = [for n in local.azRange : cidrsubnet(var.initial_cidr_block, local.mask_shift, n * 2)]
+  private_cidr_blocks = [for n in local.azRange : cidrsubnet(var.initial_cidr_block, local.mask_shift, n * 2 + 1)]
+}
+
+module "vpc" {
+  source = "terraform-aws-modules/vpc/aws"
+
+  name = var.vpc_name
+  cidr = var.initial_cidr_block
+
+  azs             = local.azs
+  private_subnets = local.private_cidr_blocks
+  public_subnets  = local.public_cidr_blocks
+
+  enable_nat_gateway = true
+  enable_vpn_gateway = true
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}

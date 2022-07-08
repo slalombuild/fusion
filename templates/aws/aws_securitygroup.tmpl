@@ -1,0 +1,51 @@
+{{ if ne .PublicIngressPort 0 }}
+resource "aws_security_group" "public" {
+  name = "Public security group"
+  description = "Public internet access"
+ 
+  tags = {
+    Name        = "Public security group"
+    Role        = "public"
+  }
+}
+
+resource "aws_security_group_rule" "public_egress" {
+  type        = "egress"
+  from_port   = 0
+  to_port     = 0
+  protocol    = "-1"
+  cidr_blocks = ["0.0.0.0/0"]
+ 
+  security_group_id = aws_security_group.public.id
+}
+
+resource "aws_security_group_rule" "public_ingress" {
+  type              = "ingress"
+  from_port         = {{ .PublicIngressPort }}
+  to_port           = {{ .PublicIngressPort }}
+  protocol          = {{ quote .PublicIngressProtocol }}
+  security_group_id = aws_security_group.public.id
+}
+
+{{ else }}
+resource "aws_security_group" "private" {
+  name = "Private security group"
+  description = "Private internet access"
+ 
+  tags = {
+    Name        = "Private security group"
+    Role        = "private"
+  }
+}
+ 
+resource "aws_security_group_rule" "private_egress" {
+  type        = "egress"
+  from_port   = 0
+  to_port     = 0
+  protocol    = "-1"
+ 
+  security_group_id = aws_security_group.private.id
+}
+ 
+{{ end }}
+

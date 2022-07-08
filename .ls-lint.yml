@@ -1,0 +1,16 @@
+ls:
+  .go: snake_case
+  .tmpl: snake_case
+
+  cmd:
+    .dir: kebab-case
+  internal:
+    .dir: kebab-case
+  templates:
+    .dir: kebab-case
+
+ignore:
+  - vendor
+  - dist
+  - .idea
+  - .vscode

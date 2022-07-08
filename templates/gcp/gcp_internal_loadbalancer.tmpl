@@ -1,0 +1,38 @@
+resource "google_compute_forwarding_rule" "default" {
+  name   = {{ quote .ForwardingRuleName }}
+  region = {{ quote .Region }}
+
+  load_balancing_scheme = "INTERNAL"
+  backend_service       = google_compute_region_backend_service.backend.id
+  all_ports             = true
+  network               = google_compute_network.default.name
+  subnetwork            = google_compute_subnetwork.default.name
+}
+
+resource "google_compute_region_backend_service" "backend" {
+  name          = {{ quote .BackendServiceName }}
+  region        = {{ quote .Region }}
+  health_checks = [google_compute_health_check.hc.id]
+}
+
+resource "google_compute_health_check" "hc" {
+  name               = {{ quote .HealthCheckName }}
+  check_interval_sec = 1
+  timeout_sec        = 1
+
+  tcp_health_check {
+    port = "80"
+  }
+}
+
+resource "google_compute_network" "default" {
+  name                    = {{ quote .NetworkName }}
+  auto_create_subnetworks = false
+}
+
+resource "google_compute_subnetwork" "default" {
+  name          = {{ quote .SubnetName }}
+  ip_cidr_range = "0.0.0.0/0"
+  region        = {{ quote .Region }}
+  network       = google_compute_network.default.id
+}

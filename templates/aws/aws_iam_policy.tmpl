@@ -1,0 +1,7 @@
+resource "aws_iam_policy" "policy" {
+  name        = {{ quote .Name }}
+  path        = {{ quote .Path }}
+  description = {{ quote .Description }}
+
+  policy = jsonencode({{ toPrettyJson .PolicyJSON }})
+}

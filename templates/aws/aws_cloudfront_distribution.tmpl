@@ -1,0 +1,52 @@
+{{ if not .LoggingBucketName }}
+resource "aws_s3_bucket" "loggingbucket" {
+    bucket = "FusionCloudFrontLoggingBucket"
+} 
+
+resource "aws_s3_bucket_acl" "loggingbucketACL" {
+    bucket = aws_s3_bucket.loggingbucket.id
+    acl = "private"
+}
+{{ end }}
+
+resource "aws_cloudfront_distribution" "s3_distribution" {
+  origin {
+    domain_name = "{{ .OriginBucketName }}.s3.amazonaws.com"
+    origin_id   = "CloudfrontOrigin"
+  }
+
+  enabled             = true
+  is_ipv6_enabled     = true
+  comment             = "CloudfrontDistro"
+  default_root_object = "index.html"
+  price_class         = "PriceClass_All"
+
+  logging_config {
+    include_cookies = false
+    bucket          = {{ if .LoggingBucketName }}{{ quote .LoggingBucketName }}{{ else }}aws_s3_bucket.loggingbucket.id{{ end }}
+    prefix          = "cloudfront"
+    }
+
+  aliases = [{{ quote .CloudfrontAlias }}]
+
+  default_cache_behavior {
+    allowed_methods  = ["GET", "HEAD"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = "CloudfrontOrigin"
+
+    viewer_protocol_policy = "allow-all"
+    min_ttl                = 0
+    default_ttl            = 3600
+    max_ttl                = 86400
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+
+  viewer_certificate {
+    cloudfront_default_certificate = true
+  }
+}

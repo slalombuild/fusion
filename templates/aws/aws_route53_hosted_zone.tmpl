@@ -1,0 +1,30 @@
+module "zones" {
+  source  = "terraform-aws-modules/route53/aws/modules/zones"
+
+  zones = {
+    {{ quote .Zone }} = {
+      comment = {{ quote .Zone }}
+    }
+  }
+}
+
+module "records" {
+  source  = "terraform-aws-modules/route53/aws/modules/records"
+
+  zone_name = {{ quote .Zone }}
+
+  records = [
+    {
+      name    = {{ quote .Zone }}
+      type    = "A"
+      ttl     = 3600
+      records = [{{ quote .Target }}]
+    },
+    {
+      name    = {{ quote .Zone }}
+      type    = "AAAA"
+      ttl     = 3600
+      records = [{{ quote .Target }}]
+    }
+  ]
+}

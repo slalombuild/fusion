@@ -1,0 +1,180 @@
+#Provider
+
+provider "aws" {
+  region = {{ quote .AwsRegion }}
+}
+
+#VPC
+
+variable "initial_cidr_block" {
+  type    = string
+  default = {{ quote .VpcCiderBlock }}
+}
+
+variable "az_count" {
+  type    = number
+  default = {{ .VpcAzCount }}
+}
+
+variable "subnet_capacity" {
+  type    = number
+  default = {{ .VpcSubnetCapacity }}
+}
+
+variable "vpc_name" {
+  type    = string
+  default = {{ quote .VpcName }}
+}
+
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
+locals {
+  azRange             = range(0, var.az_count)
+  azs                 = data.aws_availability_zones.available.names
+  mask_shift          = 32 - ceil(log(var.subnet_capacity, 2)) - parseint(split("/", var.initial_cidr_block)[1], 10)
+  public_cidr_blocks  = [for n in local.azRange : cidrsubnet(var.initial_cidr_block, local.mask_shift, n * 2)]
+  private_cidr_blocks = [for n in local.azRange : cidrsubnet(var.initial_cidr_block, local.mask_shift, n * 2 + 1)]
+}
+
+module "vpc" {
+  source = "terraform-aws-modules/vpc/aws"
+
+  name = var.vpc_name
+  cidr = var.initial_cidr_block
+
+  azs             = local.azs
+  private_subnets = local.private_cidr_blocks
+  public_subnets  = local.public_cidr_blocks
+
+  enable_nat_gateway = true
+  enable_vpn_gateway = true
+
+  tags = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
+}
+
+#LAMBDA
+
+module "Lambda" {
+  source = "terraform-aws-modules/lambda/aws"
+
+  function_name = {{ quote .LambdaName }}
+  source_path = {{ quote .LambdaFilePath }}
+
+}
+
+#APIGateway
+
+ module "api_gateway" {
+  source                                   = "terraform-aws-modules/apigateway-v2/aws"
+  name                                     = {{ quote .APIGatewayName }}
+  target                                   = module.Lambda.lambda_function_arn
+  create_api_domain_name                   = false
+
+  default_stage_access_log_destination_arn = aws_cloudwatch_log_group.log_group.arn
+}
+
+resource "aws_cloudwatch_log_group" "log_group" {
+  name  = "fusion-api-gateway-log-group"
+}
+
+#Route53
+
+module "zones" {
+  source  = "terraform-aws-modules/route53/aws//modules/zones"
+
+  zones = {
+    {{ quote .Route53Zone }} = {
+      comment = {{ quote .Route53Zone }}
+    }
+  }
+}
+
+module "records" {
+  source  = "terraform-aws-modules/route53/aws//modules/records"
+
+  zone_name = {{ quote .Route53Zone }}
+
+  records = [
+    {
+      name    = {{ quote .Route53Zone }}
+      type    = "A"
+      ttl     = 3600
+      records = [{{ quote .Route53Target }}]
+    },
+    {
+      name    = {{ quote .Route53Zone }}
+      type    = "AAAA"
+      ttl     = 3600
+      records = [{{ quote .Route53Target }}]
+    }
+  ]
+}
+
+#CLOUDFRONT
+#OriginBucket
+resource "aws_s3_bucket" "OriginBucket" {
+  bucket = {{ quote .CloudfrontOriginBucket }}
+}
+
+resource "aws_s3_bucket_acl" "OriginBucketACL" {
+    bucket = aws_s3_bucket.OriginBucket.id
+    acl = "private"
+}
+
+#LoggingBucket
+resource "aws_s3_bucket" "LoggingBucket" {
+    bucket = {{ quote .CloudfrontLoggingBucket }} 
+} 
+
+resource "aws_s3_bucket_acl" "LoggingBucketACL" {
+    bucket = aws_s3_bucket.LoggingBucket.id
+    acl = "private"
+}
+
+resource "aws_cloudfront_distribution" "s3_distribution" {
+  origin {
+    domain_name =  aws_s3_bucket.OriginBucket.bucket_regional_domain_name
+    origin_id   = "CloudfrontOrigin"
+  }
+
+  enabled             = true
+  is_ipv6_enabled     = true
+  comment             = "Cloudfront"
+  default_root_object = "index.html"
+  price_class         = "PriceClass_All"
+
+  logging_config {
+    include_cookies = false
+    bucket          = aws_s3_bucket.LoggingBucket.id
+    prefix          = "Cloudfront"
+    }
+
+  aliases = [{{ quote .CloudfrontAlias }}]
+
+  default_cache_behavior {
+    allowed_methods  = ["GET", "HEAD"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = "CloudfrontOrigin"
+
+    viewer_protocol_policy = "allow-all"
+    min_ttl                = 0
+    default_ttl            = 3600
+    max_ttl                = 86400
+  }
+
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+
+  viewer_certificate {
+    cloudfront_default_certificate = true
+  }
+}
+

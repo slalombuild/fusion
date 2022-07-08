@@ -1,0 +1,78 @@
+# https://taskfile.dev
+
+version: "3"
+
+vars:
+  BUILD_DIR: "bin"
+
+tasks:
+  default:
+    cmds:
+      - task: test
+    silent: true
+
+  install:
+    desc: Install fusion and fusionctl
+    cmds:
+      - go build -o "${GOPATH}/bin/fusion" -ldflags="-s -w" cmd/fusion/main.go
+      - go build -o "${GOPATH}/bin/fusionctl" -ldflags="-s -w" cmd/fusionctl/main.go
+
+  fmt:
+    desc: Format Go source code
+    cmds:
+      - go fmt ./...
+
+  build:
+    desc: Build application
+    cmds:
+      - goreleaser build --rm-dist --skip-validate
+
+  demo:
+    desc: Run a demo of fusion
+    cmds:
+      - go run cmd/demo/main.go --all
+
+  docs:
+    desc: Generate markdown documentation
+    cmds:
+      - gomarkdoc ./internal/...
+      - gomarkdoc ./snippets/...
+      - gomarkdoc ./templates/...
+      - gomarkdoc ./terraform/...
+
+  tools:
+    desc: Install dev tools
+    cmds:
+      - go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+      - go install github.com/goreleaser/goreleaser@latest
+      - go install github.com/loeffel-io/ls-lint@latest
+
+  test:clean:
+    desc: Clean generated files and test cache
+    cmds:
+      - rm -rf $BUILD_DIR
+      - go clean -testcache
+
+  test:
+    desc: Run all tests
+    deps: [test:clean]
+    cmds:
+      - task: test:unit
+      - task: test:coverage
+
+  test:unit:
+    desc: Run unit tests
+    cmds:
+      - go test ./... -coverprofile cover.out
+
+  test:coverage:
+    desc: Run test coverage
+    cmds:
+      - go tool cover -func cover.out
+
+  lint:
+    desc: Lint Go code and project structure
+    deps: [tools]
+    cmds:
+      - ls-lint
+      - golangci-lint run ./...

@@ -1,0 +1,37 @@
+linters:
+  enable:
+    - gofmt
+    - goimports
+    - errcheck
+    - nestif
+    - wrapcheck
+    - depguard
+    - gosimple
+    - goconst
+    - gomodguard
+issues:
+  fix: true
+  exclude-rules:
+    - path: '(.+)_test\.go'
+      linters:
+        - depguard
+
+linters-settings:
+  gosimple:
+    go: "1.17"
+    checks: ["all"]
+  wrapcheck:
+    ignorePackageGlobs:
+      - github.com/SlalomBuild/fusion/*
+  depguard:
+    include-go-root: true
+    packages-with-error-message:
+      - log: 'logging is allowed only by github.com/rs/zerolog/log'
+      - github.com/tj/assert: 'assert is allowed only by github.com/stretchr/testify/assert'
+  gomodguard:
+    blocked:
+      modules:
+        - github.com/tj/assert:
+            recommendations:
+              - github.com/stretchr/testify/assert
+            reason: "testify assert is the preferred testing library for this project"

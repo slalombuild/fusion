@@ -1,0 +1,32 @@
+before:
+  hooks:
+    - go mod tidy
+builds:
+  - id: "fusion"
+    main: "./cmd/fusion"
+    binary: "fusion"
+    goarch:
+      - amd64
+      - arm64
+    goos:
+      - windows
+      - darwin
+  - id: "fusionctl"
+    main: "./cmd/fusionctl"
+    binary: "fusionctl"
+    goarch:
+      - amd64
+      - arm64
+    goos:
+      - windows
+      - darwin
+checksum:
+  name_template: "checksums.txt"
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"

@@ -1,0 +1,29 @@
+{{- define "aws_s3_bucket" -}}
+module "s3_bucket" {
+  source = "terraform-aws-modules/s3-bucket/aws"
+
+  bucket = "{{ .Name }}"
+  create_bucket = true
+  force_destroy = {{ .ForceDestroy }}
+
+  acl    = {{ if .StaticSite -}} "log-delivery-write" {{- else -}} "private" {{- end }}
+  block_public_acls = {{ ne .StaticSite true }}
+  block_public_policy = {{ ne .StaticSite true }}
+  attach_elb_log_delivery_policy = {{ ne .StaticSite true }}
+  {{ if .StaticSite }}
+  website {
+    index_document = "index.html"
+    error_document = "404.html"
+  }
+
+  attach_deny_insecure_transport_policy = true
+  attach_require_latest_tls_policy = true
+  {{- end }}
+
+  versioning = {
+    enabled = true
+  }
+}
+{{- end }}
+
+{{- template "aws_s3_bucket" .}}

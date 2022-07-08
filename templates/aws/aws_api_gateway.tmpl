@@ -1,0 +1,12 @@
+{{ if .CreateLogGroup }}
+resource "aws_cloudwatch_log_group" "log_group" {
+  name  = "fusion-api-gateway-log-group"
+}
+{{ end }}
+
+module "api_gateway" {
+  source                                   = "terraform-aws-modules/apigateway-v2/aws"
+  name                                     = {{ quote .Name }}
+  create_api_domain_name                   = false
+  default_stage_access_log_destination_arn = {{ if .CreateLogGroup }} aws_cloudwatch_log_group.log_group.arn {{ else }} {{ .LogGroupArn }} {{ end }}
+}

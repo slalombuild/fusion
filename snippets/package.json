@@ -1,0 +1,20 @@
+{
+    "name": "fusion-snippets",
+    "displayName": "fusion-snippets",
+    "description": "snippets from fusion templates",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.65.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "contributes": {
+        "snippets": [
+            {
+                "language": "terraform",
+                "path": "./snippets.json"
+            }
+        ]
+    }
+}
