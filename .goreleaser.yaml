@@ -9,6 +9,7 @@ builds:
       - amd64
       - arm64
     goos:
+      - linux
       - windows
       - darwin
   - id: "fusionctl"
@@ -30,3 +31,5 @@ changelog:
     exclude:
       - "^docs:"
       - "^test:"
+      - "^images:"
+      - "^_examples:"
