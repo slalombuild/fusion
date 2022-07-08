@@ -10,13 +10,23 @@ Generate secure by default cloud infrastructure configuration with Go and Terraf
 
 Install the fusion cli
 
+### Go
+
+If you have Go setup on your system, you can install fusion with `go install`
+
 ```shell
-go install github.com/SlalomBuild/fusion/cmd/fusion
+go install github.com/SlalomBuild/fusion/cmd/fusion@latest
+```
+
+### Docker Image
+
+```
+docker run --rm -it ghcr.io/slalombuild/fusion:latest --help
 ```
 
 ## Usage ⚡️
 
-Getting started with fusion is as simple as naming the type of cloud resource you want and  allow fusion to do the rest.
+Getting started with fusion is as simple as naming the type of cloud resource you want and allow fusion to generate the terraform.
 
 See available commands with `--help`
 
