@@ -12,10 +12,8 @@ builds:
   - id: "fusionctl"
     main: "./cmd/fusionctl"
     binary: "fusionctl"
-    goarch:
-      - amd64
-      - arm64
     goos:
+      - linux
       - windows
       - darwin
 checksum:
