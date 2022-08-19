@@ -18,6 +18,23 @@ If you have Go setup on your system, you can install fusion with `go install`
 go install github.com/SlalomBuild/fusion/cmd/fusion@latest
 ```
 
+### Homebrew
+
+```shell
+brew tap SlalomBuild/fusion
+brew install fusion
+
+# Optionally install the fusionctl dev tool
+brew install fusionctl
+```
+
+### Scoop
+
+```shell
+scoop bucket add fusion https://github.com/SlalomBuild/fusion.git
+scoop install fusion
+```
+
 ### Docker Image
 
 ```
