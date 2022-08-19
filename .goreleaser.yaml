@@ -19,7 +19,7 @@ builds:
 brews:
   - name: fusion
     homepage: "https://github.com/SlalomBuild/fusion"
-    description: "Generate secure by default cloud infrastructure configuration with Go and Terraform."
+    description: "Generate secure by default cloud infrastructure configuration with Go and Terraform"
     license: "MIT"
     goarm: "6"
     folder: .github/homebrew
