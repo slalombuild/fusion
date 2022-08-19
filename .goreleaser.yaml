@@ -22,7 +22,6 @@ brews:
     description: "Generate secure by default cloud infrastructure configuration with Go and Terraform"
     license: "MIT"
     goarm: "6"
-    folder: .github/homebrew
     tap:
       owner: SlalomBuild
       name: fusion
@@ -36,7 +35,6 @@ scoop:
     bucket:
       owner: SlalomBuild
       name: fusion
-    folder: .github/scoop
     commit_author:
       name: goreleaserbot
       email: bot@goreleaser.com
