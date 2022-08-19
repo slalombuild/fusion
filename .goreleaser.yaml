@@ -18,8 +18,6 @@ builds:
       - darwin
 brews:
   - name: fusion
-    ids:
-      - fusion
     homepage: "https://github.com/SlalomBuild/fusion"
     description: "Generate secure by default cloud infrastructure configuration with Go and Terraform."
     license: "MIT"
@@ -28,22 +26,6 @@ brews:
     tap:
       owner: SlalomBuild
       name: fusion
-    url_template: "https://github.com/SlalomBuild/fusion/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
-    commit_author:
-      name: goreleaserbot
-      email: bot@goreleaser.com
-
-  - name: fusionctl
-    ids:
-      - fusionctl
-    homepage: "https://github.com/SlalomBuild/fusionctl"
-    description: "Development CLI for fusion"
-    license: "MIT"
-    goarm: "6"
-    folder: .github/homebrew
-    tap:
-      owner: SlalomBuild
-      name: fusionctl
     url_template: "https://github.com/SlalomBuild/fusion/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
     commit_author:
       name: goreleaserbot
