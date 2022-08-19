@@ -1,0 +1,21 @@
+{
+    "version": "0.1.5",
+    "architecture": {
+        "32bit": {
+            "url": "https://github.com/SlalomBuild/fusion/releases/download/v0.1.5/fusion_0.1.5_windows_386.tar.gz",
+            "bin": [
+                "fusion.exe",
+                "fusionctl.exe"
+            ],
+            "hash": "8c67d9feca2d6404111278d27c3b47efff2d13d9c7be185d752f1d4f713de8f6"
+        },
+        "64bit": {
+            "url": "https://github.com/SlalomBuild/fusion/releases/download/v0.1.5/fusion_0.1.5_windows_amd64.tar.gz",
+            "bin": [
+                "fusion.exe",
+                "fusionctl.exe"
+            ],
+            "hash": "b3aba3b0fe87a181b9cd3944cd9fa6792fd9f5417c4033e59c083e5bb7d0639c"
+        }
+    }
+}
