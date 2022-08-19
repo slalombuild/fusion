@@ -16,12 +16,65 @@ builds:
       - linux
       - windows
       - darwin
+brews:
+  - name: fusion
+    ids:
+      - fusion
+    homepage: "https://github.com/SlalomBuild/fusion"
+    description: "Generate secure by default cloud infrastructure configuration with Go and Terraform."
+    license: "MIT"
+    goarm: "6"
+    folder: .github/homebrew
+    tap:
+      owner: SlalomBuild
+      name: fusion
+    url_template: "https://github.com/SlalomBuild/fusion/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+    commit_author:
+      name: goreleaserbot
+      email: bot@goreleaser.com
+
+  - name: fusionctl
+    ids:
+      - fusionctl
+    homepage: "https://github.com/SlalomBuild/fusionctl"
+    description: "Development CLI for fusion"
+    license: "MIT"
+    goarm: "6"
+    folder: .github/homebrew
+    tap:
+      owner: SlalomBuild
+      name: fusionctl
+    url_template: "https://github.com/SlalomBuild/fusion/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+    commit_author:
+      name: goreleaserbot
+      email: bot@goreleaser.com
+
+scoop:
+    url_template: "https://github.com/SlalomBuild/fusion/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+    bucket:
+      owner: SlalomBuild
+      name: fusion
+    folder: .github/scoop
+    commit_author:
+      name: goreleaserbot
+      email: bot@goreleaser.com
+
 checksum:
   name_template: "checksums.txt"
 snapshot:
   name_template: "{{ incpatch .Version }}-next"
 changelog:
   sort: asc
+  groups:
+    - title: Features
+      regexp: "^.*feat[(\\w)]*:+.*$"
+      order: 0
+    - title: 'Bug fixes'
+      regexp: "^.*fix[(\\w)]*:+.*$"
+      order: 1
+    - title: Others
+      order: 999
+
   filters:
     exclude:
       - "^docs:"
