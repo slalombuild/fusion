@@ -99,6 +99,9 @@ fusion gen snippets -e intellij -o filename.xml
 
 *Intellij users must check [this page](https://intellij-support.jetbrains.com/hc/en-us/articles/206544519-Directories-used-by-the-IDE-to-store-settings-caches-plugins-and-logs) to find the Configuration directory that pertains to your IDE version and operating system.*
 
-## Development
+## Contributions
 
-For detailed development instructions, view our [DEVELOPMENT.md](./github/DEVELOPMENT.md) and [CONTRIBUTING.md](.github/CONTRIBUTING.md).
+Is there a feature that you'd like to see implemented in Fusion? Feel free to open a [Feature Request](https://github.com/SlalomBuild/fusion/issues/new?assignees=&labels=enhancement&template=feature_request.yml&title=%28short+issue+description%29) issue to let us know what you'd like to see! 
+We encourage submitting [Pull Requests](https://github.com/SlalomBuild/fusion/pulls) directly to add terraform resources to the library
+
+For detailed development instructions, view our [DEVELOPMENT](.github/DEVELOPMENT.md) and [CONTRIBUTIN](.github/CONTRIBUTING.md) guidelines.
