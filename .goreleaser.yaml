@@ -6,10 +6,6 @@ builds:
   - linux
   - windows
   - darwin
-  goarch:
-  - amd64
-  - arm
-  - arm64
 - id: "fusionctl"
   main: "./cmd/fusionctl"
   binary: "fusionctl"
@@ -17,9 +13,6 @@ builds:
   - linux
   - windows
   - darwin
-  goarch:
-  - amd64
-  - arm64
 brews:
 - name: fusion
   homepage: "https://github.com/slalombuild/fusion"
