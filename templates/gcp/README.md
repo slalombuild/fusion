@@ -3,7 +3,7 @@
 # gcp
 
 ```go
-import "github.com/SlalomBuild/fusion/templates/gcp"
+import "github.com/slalombuild/fusion/templates/gcp"
 ```
 
 Package gcp provides terraform templates for Google Cloud Platform \(GCP\)
@@ -18,11 +18,13 @@ Package gcp provides terraform templates for Google Cloud Platform \(GCP\)
 
 ## Variables
 
+go:embed gcp\_internal\_loadbalancer\.tmpl
+
 ```go
 var TEMPLATE_GCP_INTERNAL_LOADBALANCER string
 ```
 
-## type [InternalLoadBalancer](<https://github.com/SlalomBuild/fusion/blob/main/templates/gcp/gcp_internal_loadbalancer.go#L16-L23>)
+## type [InternalLoadBalancer](<https://github.com/slalombuild/fusion/blob/main/templates/gcp/gcp_internal_loadbalancer.go#L16-L23>)
 
 InternalLoadBalancer is the template data object used to create a gcp internal loadbalancer
 
@@ -37,7 +39,7 @@ type InternalLoadBalancer struct {
 }
 ```
 
-### func [NewInternalLoadBalancer](<https://github.com/SlalomBuild/fusion/blob/main/templates/gcp/gcp_internal_loadbalancer.go#L26>)
+### func [NewInternalLoadBalancer](<https://github.com/slalombuild/fusion/blob/main/templates/gcp/gcp_internal_loadbalancer.go#L26>)
 
 ```go
 func NewInternalLoadBalancer(forwardingrulename, region, backendservicename, healthcheckname, networkname, subnetname string) *InternalLoadBalancer
@@ -45,7 +47,7 @@ func NewInternalLoadBalancer(forwardingrulename, region, backendservicename, hea
 
 NewInternalLoadBalancer creates a new internal load balancer
 
-### func \(\*InternalLoadBalancer\) [Render](<https://github.com/SlalomBuild/fusion/blob/main/templates/gcp/gcp_internal_loadbalancer.go#L38>)
+### func \(\*InternalLoadBalancer\) [Render](<https://github.com/slalombuild/fusion/blob/main/templates/gcp/gcp_internal_loadbalancer.go#L38>)
 
 ```go
 func (resource *InternalLoadBalancer) Render(w io.Writer, skipColor bool) error

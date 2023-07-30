@@ -3,7 +3,7 @@
 # azure
 
 ```go
-import "github.com/SlalomBuild/fusion/templates/azure"
+import "github.com/slalombuild/fusion/templates/azure"
 ```
 
 Package azure provides terraform templates for Microsoft Azure
@@ -20,15 +20,19 @@ Package azure provides terraform templates for Microsoft Azure
 
 ## Variables
 
+go:embed azure\_function\.tmpl
+
 ```go
 var TEMPLATE_AZURE_FUNCTION string
 ```
+
+go:embed azure\_vnet\.tmpl
 
 ```go
 var TEMPLATE_AZURE_VNET string
 ```
 
-## type [AzureFunction](<https://github.com/SlalomBuild/fusion/blob/main/templates/azure/azure_function.go#L12-L18>)
+## type [AzureFunction](<https://github.com/slalombuild/fusion/blob/main/templates/azure/azure_function.go#L12-L18>)
 
 AzureFunction is the template data object used to create an azure function
 
@@ -37,7 +41,7 @@ type AzureFunction struct {
 }
 ```
 
-### func [NewAzureFunction](<https://github.com/SlalomBuild/fusion/blob/main/templates/azure/azure_function.go#L21>)
+### func [NewAzureFunction](<https://github.com/slalombuild/fusion/blob/main/templates/azure/azure_function.go#L21>)
 
 ```go
 func NewAzureFunction() *AzureFunction
@@ -45,7 +49,7 @@ func NewAzureFunction() *AzureFunction
 
 NewAzureFunction creates new azure function data
 
-## type [Vnet](<https://github.com/SlalomBuild/fusion/blob/main/templates/azure/azure_vnet.go#L14-L18>)
+## type [Vnet](<https://github.com/slalombuild/fusion/blob/main/templates/azure/azure_vnet.go#L14-L18>)
 
 ```go
 type Vnet struct {
@@ -55,13 +59,13 @@ type Vnet struct {
 }
 ```
 
-### func [NewVnet](<https://github.com/SlalomBuild/fusion/blob/main/templates/azure/azure_vnet.go#L20>)
+### func [NewVnet](<https://github.com/slalombuild/fusion/blob/main/templates/azure/azure_vnet.go#L20>)
 
 ```go
 func NewVnet(resourcegroupname, location, virtualnetworkname string) *Vnet
 ```
 
-### func \(\*Vnet\) [Render](<https://github.com/SlalomBuild/fusion/blob/main/templates/azure/azure_vnet.go#L28>)
+### func \(\*Vnet\) [Render](<https://github.com/slalombuild/fusion/blob/main/templates/azure/azure_vnet.go#L28>)
 
 ```go
 func (resource *Vnet) Render(w io.Writer, skipColor bool) error

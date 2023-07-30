@@ -3,7 +3,7 @@
 # snippets
 
 ```go
-import "github.com/SlalomBuild/fusion/snippets"
+import "github.com/slalombuild/fusion/snippets"
 ```
 
 Package snippets implements support for building snippets for vscode
@@ -38,11 +38,13 @@ Package snippets implements support for building snippets for vscode
 
 ## Variables
 
+go:embed package\.json
+
 ```go
 var EXTENSION_PACKAGE_FILE []byte
 ```
 
-## func [JSON](<https://github.com/SlalomBuild/fusion/blob/main/snippets/output.go#L22>)
+## func [JSON](<https://github.com/slalombuild/fusion/blob/main/snippets/output.go#L22>)
 
 ```go
 func JSON(w io.Writer, v interface{}) error
@@ -50,7 +52,7 @@ func JSON(w io.Writer, v interface{}) error
 
 JSON renders the snippets to a pretty\-printed object at the destination io\.Writer \(w\)\.
 
-## func [XML](<https://github.com/SlalomBuild/fusion/blob/main/snippets/output.go#L13>)
+## func [XML](<https://github.com/slalombuild/fusion/blob/main/snippets/output.go#L13>)
 
 ```go
 func XML(w io.Writer, v interface{}) error
@@ -58,7 +60,7 @@ func XML(w io.Writer, v interface{}) error
 
 XML renders the live templates to a pretty\-printed object at the destination io\.Writer \(w\)\.
 
-## type [Generator](<https://github.com/SlalomBuild/fusion/blob/main/snippets/generator.go#L8-L10>)
+## type [Generator](<https://github.com/slalombuild/fusion/blob/main/snippets/generator.go#L8-L10>)
 
 ```go
 type Generator interface {
@@ -66,13 +68,13 @@ type Generator interface {
 }
 ```
 
-## type [IntelliJ](<https://github.com/SlalomBuild/fusion/blob/main/snippets/intellij_snippet.go#L24>)
+## type [IntelliJ](<https://github.com/slalombuild/fusion/blob/main/snippets/intellij_snippet.go#L24>)
 
 ```go
 type IntelliJ struct{}
 ```
 
-### func \(IntelliJ\) [AddTemplate](<https://github.com/SlalomBuild/fusion/blob/main/snippets/intellij_snippet.go#L91>)
+### func \(IntelliJ\) [AddTemplate](<https://github.com/slalombuild/fusion/blob/main/snippets/intellij_snippet.go#L91>)
 
 ```go
 func (i IntelliJ) AddTemplate(target *IntelliJTemplateGroup, template IntelliJTemplate)
@@ -80,7 +82,7 @@ func (i IntelliJ) AddTemplate(target *IntelliJTemplateGroup, template IntelliJTe
 
 AddTemplate adds a Tempate to the target TemplateSet struct
 
-### func \(IntelliJ\) [Generate](<https://github.com/SlalomBuild/fusion/blob/main/snippets/intellij_snippet.go#L204>)
+### func \(IntelliJ\) [Generate](<https://github.com/slalombuild/fusion/blob/main/snippets/intellij_snippet.go#L204>)
 
 ```go
 func (i IntelliJ) Generate(w io.Writer, filesystem embed.FS) error
@@ -92,7 +94,7 @@ the fusion templates
 
 Generate supports rendering output to an io\.Writer\.
 
-### func \(IntelliJ\) [NewTemplate](<https://github.com/SlalomBuild/fusion/blob/main/snippets/intellij_snippet.go#L99>)
+### func \(IntelliJ\) [NewTemplate](<https://github.com/slalombuild/fusion/blob/main/snippets/intellij_snippet.go#L99>)
 
 ```go
 func (i IntelliJ) NewTemplate(name string, template string, opts ...IntelliJOption) *IntelliJTemplate
@@ -102,7 +104,7 @@ NewTemplate creates a new live template Template\, the building block for Intell
 
 All Template bodies are generated from parsing the provided Go template\.
 
-### func \(IntelliJ\) [WithDescription](<https://github.com/SlalomBuild/fusion/blob/main/snippets/intellij_snippet.go#L170>)
+### func \(IntelliJ\) [WithDescription](<https://github.com/slalombuild/fusion/blob/main/snippets/intellij_snippet.go#L170>)
 
 ```go
 func (i IntelliJ) WithDescription(description string) IntelliJOption
@@ -110,7 +112,7 @@ func (i IntelliJ) WithDescription(description string) IntelliJOption
 
 WithDescription applies a description to a Template\.
 
-### func \(IntelliJ\) [WithValue](<https://github.com/SlalomBuild/fusion/blob/main/snippets/intellij_snippet.go#L177>)
+### func \(IntelliJ\) [WithValue](<https://github.com/slalombuild/fusion/blob/main/snippets/intellij_snippet.go#L177>)
 
 ```go
 func (i IntelliJ) WithValue(value string) IntelliJOption
@@ -118,13 +120,13 @@ func (i IntelliJ) WithValue(value string) IntelliJOption
 
 WithValue applies the live template value lines to a Template\.
 
-### func \(IntelliJ\) [WithVariables](<https://github.com/SlalomBuild/fusion/blob/main/snippets/intellij_snippet.go#L153>)
+### func \(IntelliJ\) [WithVariables](<https://github.com/slalombuild/fusion/blob/main/snippets/intellij_snippet.go#L153>)
 
 ```go
 func (i IntelliJ) WithVariables(vars []string) IntelliJOption
 ```
 
-## type [IntelliJOption](<https://github.com/SlalomBuild/fusion/blob/main/snippets/intellij_snippet.go#L88>)
+## type [IntelliJOption](<https://github.com/slalombuild/fusion/blob/main/snippets/intellij_snippet.go#L88>)
 
 IntelliJOption is a modifying function that applies a property to an Template\.
 
@@ -132,7 +134,7 @@ IntelliJOption is a modifying function that applies a property to an Template\.
 type IntelliJOption func(*IntelliJTemplate)
 ```
 
-## type [IntelliJTemplate](<https://github.com/SlalomBuild/fusion/blob/main/snippets/intellij_snippet.go#L29-L52>)
+## type [IntelliJTemplate](<https://github.com/slalombuild/fusion/blob/main/snippets/intellij_snippet.go#L29-L52>)
 
 Templates contain information about the live template including information about any variables it uses\, the base template itself\, and other metadata
 
@@ -163,7 +165,7 @@ type IntelliJTemplate struct {
 }
 ```
 
-## type [IntelliJTemplateGroup](<https://github.com/SlalomBuild/fusion/blob/main/snippets/intellij_snippet.go#L16-L20>)
+## type [IntelliJTemplateGroup](<https://github.com/slalombuild/fusion/blob/main/snippets/intellij_snippet.go#L16-L20>)
 
 The IntelliJTemplateGroup contains all of the Templates that will be contained within the Template group
 
@@ -175,13 +177,13 @@ type IntelliJTemplateGroup struct {
 }
 ```
 
-## type [VSCode](<https://github.com/SlalomBuild/fusion/blob/main/snippets/vsc_snippet.go#L17>)
+## type [VSCode](<https://github.com/slalombuild/fusion/blob/main/snippets/vsc_snippet.go#L17>)
 
 ```go
 type VSCode struct{}
 ```
 
-### func \(VSCode\) [AddItem](<https://github.com/SlalomBuild/fusion/blob/main/snippets/vsc_snippet.go#L52>)
+### func \(VSCode\) [AddItem](<https://github.com/slalombuild/fusion/blob/main/snippets/vsc_snippet.go#L52>)
 
 ```go
 func (v VSCode) AddItem(target *map[string]*VSCodeSnippet, snippet *VSCodeSnippet)
@@ -189,7 +191,7 @@ func (v VSCode) AddItem(target *map[string]*VSCodeSnippet, snippet *VSCodeSnippe
 
 AddItem adds an Item to the target Snippet map\.
 
-### func \(VSCode\) [Generate](<https://github.com/SlalomBuild/fusion/blob/main/snippets/vsc_snippet.go#L152>)
+### func \(VSCode\) [Generate](<https://github.com/slalombuild/fusion/blob/main/snippets/vsc_snippet.go#L152>)
 
 ```go
 func (v VSCode) Generate(w io.Writer, filesystem embed.FS) error
@@ -199,7 +201,7 @@ Generate generates a snippets file from all Go template files in the provided fi
 
 Generate supports rendering output to an io\.Writer\.
 
-### func \(VSCode\) [NewItem](<https://github.com/SlalomBuild/fusion/blob/main/snippets/vsc_snippet.go#L75>)
+### func \(VSCode\) [NewItem](<https://github.com/slalombuild/fusion/blob/main/snippets/vsc_snippet.go#L75>)
 
 ```go
 func (v VSCode) NewItem(name string, template string, opts ...VSCodeOption) *VSCodeSnippet
@@ -216,8 +218,8 @@ All Item bodies are generated from parsing the provided Go template\.
 package main
 
 import (
-	"github.com/SlalomBuild/fusion/snippets"
-	"github.com/SlalomBuild/fusion/templates/aws"
+	"github.com/slalombuild/fusion/snippets"
+	"github.com/slalombuild/fusion/templates/aws"
 )
 
 func main() {
@@ -231,7 +233,7 @@ func main() {
 </p>
 </details>
 
-### func \(VSCode\) [NewSnippetMap](<https://github.com/SlalomBuild/fusion/blob/main/snippets/vsc_snippet.go#L66>)
+### func \(VSCode\) [NewSnippetMap](<https://github.com/slalombuild/fusion/blob/main/snippets/vsc_snippet.go#L66>)
 
 ```go
 func (v VSCode) NewSnippetMap() map[string]*VSCodeSnippet
@@ -248,8 +250,8 @@ SnippetMaps are used to build a vscode snippet file using a map of named Items\.
 package main
 
 import (
-	"github.com/SlalomBuild/fusion/snippets"
-	"github.com/SlalomBuild/fusion/templates/aws"
+	"github.com/slalombuild/fusion/snippets"
+	"github.com/slalombuild/fusion/templates/aws"
 	"log"
 	"os"
 )
@@ -294,7 +296,7 @@ func main() {
 </p>
 </details>
 
-### func \(VSCode\) [WithBody](<https://github.com/SlalomBuild/fusion/blob/main/snippets/vsc_snippet.go#L117>)
+### func \(VSCode\) [WithBody](<https://github.com/slalombuild/fusion/blob/main/snippets/vsc_snippet.go#L117>)
 
 ```go
 func (v VSCode) WithBody(body []string) VSCodeOption
@@ -302,7 +304,7 @@ func (v VSCode) WithBody(body []string) VSCodeOption
 
 WithBody applies the snippet body lines to an Item\.
 
-### func \(VSCode\) [WithDescription](<https://github.com/SlalomBuild/fusion/blob/main/snippets/vsc_snippet.go#L110>)
+### func \(VSCode\) [WithDescription](<https://github.com/slalombuild/fusion/blob/main/snippets/vsc_snippet.go#L110>)
 
 ```go
 func (v VSCode) WithDescription(description string) VSCodeOption
@@ -310,7 +312,7 @@ func (v VSCode) WithDescription(description string) VSCodeOption
 
 WithDescription applies a description to an Item\.
 
-### func \(VSCode\) [WithPrefix](<https://github.com/SlalomBuild/fusion/blob/main/snippets/vsc_snippet.go#L103>)
+### func \(VSCode\) [WithPrefix](<https://github.com/slalombuild/fusion/blob/main/snippets/vsc_snippet.go#L103>)
 
 ```go
 func (v VSCode) WithPrefix(prefix string) VSCodeOption
@@ -318,7 +320,7 @@ func (v VSCode) WithPrefix(prefix string) VSCodeOption
 
 WithPrefix applies an intellisense prefix to an Item\.
 
-## type [VSCodeOption](<https://github.com/SlalomBuild/fusion/blob/main/snippets/vsc_snippet.go#L49>)
+## type [VSCodeOption](<https://github.com/slalombuild/fusion/blob/main/snippets/vsc_snippet.go#L49>)
 
 VSCodeOption is a modifying function that applies a property to an Item\.
 
@@ -326,7 +328,7 @@ VSCodeOption is a modifying function that applies a property to an Item\.
 type VSCodeOption func(*VSCodeSnippet)
 ```
 
-## type [VSCodeSnippet](<https://github.com/SlalomBuild/fusion/blob/main/snippets/vsc_snippet.go#L25-L45>)
+## type [VSCodeSnippet](<https://github.com/slalombuild/fusion/blob/main/snippets/vsc_snippet.go#L25-L45>)
 
 Item is the content of a named VSCode snippet\. Items are placed into maps of map\[string\]\*VSCodeSnippet to create a full named VSCodeSnippet\.
 

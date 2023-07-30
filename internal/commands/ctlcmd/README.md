@@ -3,7 +3,7 @@
 # ctlcmd
 
 ```go
-import "github.com/SlalomBuild/fusion/internal/commands/ctlcmd"
+import "github.com/slalombuild/fusion/internal/commands/ctlcmd"
 ```
 
 Package ctlcmd contains all commands for the fusionctl cli
@@ -27,7 +27,7 @@ var (
 )
 ```
 
-## type [Answers](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/ctlcmd/cmd_ctl_new_resource.go#L27-L31>)
+## type [Answers](<https://github.com/slalombuild/fusion/blob/main/internal/commands/ctlcmd/cmd_ctl_new_resource.go#L27-L31>)
 
 ```go
 type Answers struct {
@@ -37,7 +37,7 @@ type Answers struct {
 }
 ```
 
-## type [Ctl](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/ctlcmd/cmd_ctl.go#L8-L11>)
+## type [Ctl](<https://github.com/slalombuild/fusion/blob/main/internal/commands/ctlcmd/cmd_ctl.go#L8-L11>)
 
 ```go
 type Ctl struct {
@@ -46,7 +46,7 @@ type Ctl struct {
 }
 ```
 
-## type [NewResourceCmd](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/ctlcmd/cmd_ctl_new_resource.go#L20-L25>)
+## type [NewResourceCmd](<https://github.com/slalombuild/fusion/blob/main/internal/commands/ctlcmd/cmd_ctl_new_resource.go#L20-L25>)
 
 ```go
 type NewResourceCmd struct {
@@ -57,13 +57,13 @@ type NewResourceCmd struct {
 }
 ```
 
-### func \(\*NewResourceCmd\) [Run](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/ctlcmd/cmd_ctl_new_resource.go#L33>)
+### func \(\*NewResourceCmd\) [Run](<https://github.com/slalombuild/fusion/blob/main/internal/commands/ctlcmd/cmd_ctl_new_resource.go#L33>)
 
 ```go
 func (cmd *NewResourceCmd) Run(ctx *commands.Context) error
 ```
 
-## type [NewStackCmd](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/ctlcmd/cmd_ctl_new_stack.go#L8-L10>)
+## type [NewStackCmd](<https://github.com/slalombuild/fusion/blob/main/internal/commands/ctlcmd/cmd_ctl_new_stack.go#L8-L10>)
 
 ```go
 type NewStackCmd struct {
@@ -71,7 +71,7 @@ type NewStackCmd struct {
 }
 ```
 
-### func \(\*NewStackCmd\) [Run](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/ctlcmd/cmd_ctl_new_stack.go#L12>)
+### func \(\*NewStackCmd\) [Run](<https://github.com/slalombuild/fusion/blob/main/internal/commands/ctlcmd/cmd_ctl_new_stack.go#L12>)
 
 ```go
 func (cmd *NewStackCmd) Run(ctx *commands.Context) error

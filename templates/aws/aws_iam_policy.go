@@ -4,8 +4,8 @@ import (
 	_ "embed"
 	"io"
 
-	"github.com/SlalomBuild/fusion/templates"
 	errors "github.com/pkg/errors"
+	"github.com/slalombuild/fusion/templates"
 )
 
 //go:embed aws_iam_policy.tmpl

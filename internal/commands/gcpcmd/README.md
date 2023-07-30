@@ -3,7 +3,7 @@
 # gcpcmd
 
 ```go
-import "github.com/SlalomBuild/fusion/internal/commands/gcpcmd"
+import "github.com/slalombuild/fusion/internal/commands/gcpcmd"
 ```
 
 ### Package gcpcmd contains all commands for the gcp section of the fusion cli
@@ -30,7 +30,7 @@ var (
 )
 ```
 
-## type [GCP](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/gcpcmd/cmd_gcp.go#L13-L15>)
+## type [GCP](<https://github.com/slalombuild/fusion/blob/main/internal/commands/gcpcmd/cmd_gcp.go#L13-L15>)
 
 ```go
 type GCP struct {
@@ -38,7 +38,7 @@ type GCP struct {
 }
 ```
 
-## type [Globals](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/gcpcmd/cmd_gcp.go#L9-L11>)
+## type [Globals](<https://github.com/slalombuild/fusion/blob/main/internal/commands/gcpcmd/cmd_gcp.go#L9-L11>)
 
 ```go
 type Globals struct {
@@ -46,7 +46,7 @@ type Globals struct {
 }
 ```
 
-## type [NewLoadBalancerCommand](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/gcpcmd/cmd_gcp_new_loadbalancer.go#L16-L18>)
+## type [NewLoadBalancerCommand](<https://github.com/slalombuild/fusion/blob/main/internal/commands/gcpcmd/cmd_gcp_new_loadbalancer.go#L16-L18>)
 
 ```go
 type NewLoadBalancerCommand struct {
@@ -54,7 +54,7 @@ type NewLoadBalancerCommand struct {
 }
 ```
 
-### func \(\*NewLoadBalancerCommand\) [Run](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/gcpcmd/cmd_gcp_new_loadbalancer.go#L20>)
+### func \(\*NewLoadBalancerCommand\) [Run](<https://github.com/slalombuild/fusion/blob/main/internal/commands/gcpcmd/cmd_gcp_new_loadbalancer.go#L20>)
 
 ```go
 func (cmd *NewLoadBalancerCommand) Run(ctx *commands.Context) error

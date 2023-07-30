@@ -4,8 +4,8 @@ import (
 	_ "embed"
 	"io"
 
-	templates "github.com/SlalomBuild/fusion/templates"
 	errors "github.com/pkg/errors"
+	templates "github.com/slalombuild/fusion/templates"
 )
 
 //go:embed aws_securitygroup.tmpl

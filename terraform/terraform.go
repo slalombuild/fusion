@@ -5,9 +5,9 @@ import (
 	"io"
 	"os"
 
-	"github.com/SlalomBuild/fusion/templates"
 	"github.com/hashicorp/terraform-exec/tfexec"
 	"github.com/pkg/errors"
+	"github.com/slalombuild/fusion/templates"
 )
 
 const (

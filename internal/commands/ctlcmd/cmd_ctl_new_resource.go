@@ -8,9 +8,9 @@ import (
 	"github.com/rs/zerolog/log"
 
 	"github.com/AlecAivazis/survey/v2"
-	"github.com/SlalomBuild/fusion/internal/commands"
-	"github.com/SlalomBuild/fusion/internal/generate"
-	"github.com/SlalomBuild/fusion/templates"
+	"github.com/slalombuild/fusion/internal/commands"
+	"github.com/slalombuild/fusion/internal/generate"
+	"github.com/slalombuild/fusion/templates"
 )
 
 var (

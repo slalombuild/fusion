@@ -3,7 +3,7 @@
 # terraform
 
 ```go
-import "github.com/SlalomBuild/fusion/terraform"
+import "github.com/slalombuild/fusion/terraform"
 ```
 
 Package terraform provides convenience utilities for working with the terraform command line tool programatically\.
@@ -29,7 +29,7 @@ const (
 )
 ```
 
-## type [Terraform](<https://github.com/SlalomBuild/fusion/blob/main/terraform/terraform.go#L21-L26>)
+## type [Terraform](<https://github.com/slalombuild/fusion/blob/main/terraform/terraform.go#L21-L26>)
 
 ```go
 type Terraform struct {
@@ -37,7 +37,7 @@ type Terraform struct {
 }
 ```
 
-### func [New](<https://github.com/SlalomBuild/fusion/blob/main/terraform/terraform.go#L31>)
+### func [New](<https://github.com/slalombuild/fusion/blob/main/terraform/terraform.go#L31>)
 
 ```go
 func New(ctx context.Context, workingDir string) (*Terraform, error)
@@ -45,7 +45,7 @@ func New(ctx context.Context, workingDir string) (*Terraform, error)
 
 New creates a new instance of the Terraform library with error logging\, initialization\, and a terraform executable fallback built\-in\.
 
-### func \(\*Terraform\) [Cleanup](<https://github.com/SlalomBuild/fusion/blob/main/terraform/terraform.go#L107>)
+### func \(\*Terraform\) [Cleanup](<https://github.com/slalombuild/fusion/blob/main/terraform/terraform.go#L107>)
 
 ```go
 func (t *Terraform) Cleanup() error
@@ -53,7 +53,7 @@ func (t *Terraform) Cleanup() error
 
 Cleanup cleans the temporary directories created during terraform execution
 
-### func \(\*Terraform\) [Graph](<https://github.com/SlalomBuild/fusion/blob/main/terraform/terraform.go#L86>)
+### func \(\*Terraform\) [Graph](<https://github.com/slalombuild/fusion/blob/main/terraform/terraform.go#L86>)
 
 ```go
 func (t *Terraform) Graph(w io.Writer) error
@@ -61,7 +61,7 @@ func (t *Terraform) Graph(w io.Writer) error
 
 Graph initalizes and converts valid terraform into a GraphViz visualization\.
 
-### func \(\*Terraform\) [RenderTemplate](<https://github.com/SlalomBuild/fusion/blob/main/terraform/terraform.go#L61>)
+### func \(\*Terraform\) [RenderTemplate](<https://github.com/slalombuild/fusion/blob/main/terraform/terraform.go#L61>)
 
 ```go
 func (t *Terraform) RenderTemplate(r templates.Renderer) error
@@ -69,7 +69,7 @@ func (t *Terraform) RenderTemplate(r templates.Renderer) error
 
 RenderTemplate renders the terraform template to the temp dir and cleans up after
 
-### func \(\*Terraform\) [Validate](<https://github.com/SlalomBuild/fusion/blob/main/terraform/terraform.go#L77>)
+### func \(\*Terraform\) [Validate](<https://github.com/slalombuild/fusion/blob/main/terraform/terraform.go#L77>)
 
 ```go
 func (t *Terraform) Validate() error
@@ -84,9 +84,9 @@ Validate validates terraform in the working directory\.
 package main
 
 import (
-	"github.com/SlalomBuild/fusion/templates/aws"
-	"github.com/SlalomBuild/fusion/terraform"
 	"context"
+	"github.com/slalombuild/fusion/templates/aws"
+	"github.com/slalombuild/fusion/terraform"
 	"log"
 )
 

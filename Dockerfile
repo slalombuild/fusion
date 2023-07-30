@@ -5,7 +5,7 @@ COPY . /src/
 RUN CGO_ENABLED=0 go build -v -o /bin/fusion cmd/fusion/main.go
 
 LABEL author="Slalom Build"
-LABEL github="https://github.com/SlalomBuild/fusion"
+LABEL github="https://github.com/slalombuild/fusion"
 
 ENTRYPOINT ["/bin/fusion"]
 

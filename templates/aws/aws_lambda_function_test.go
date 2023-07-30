@@ -7,7 +7,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/SlalomBuild/fusion/templates"
+	"github.com/slalombuild/fusion/templates"
 
 	"github.com/stretchr/testify/assert"
 )

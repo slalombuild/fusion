@@ -3,12 +3,12 @@ package main
 import (
 	"os"
 
-	"github.com/SlalomBuild/fusion/internal/commands"
-	"github.com/SlalomBuild/fusion/internal/commands/ctlcmd"
 	"github.com/alecthomas/kong"
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
+	"github.com/slalombuild/fusion/internal/commands"
+	"github.com/slalombuild/fusion/internal/commands/ctlcmd"
 	"github.com/willabides/kongplete"
 )
 

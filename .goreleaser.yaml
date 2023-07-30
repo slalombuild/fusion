@@ -1,43 +1,43 @@
 before:
   hooks:
-    - go mod tidy
+  - go mod tidy
 builds:
-  - id: "fusion"
-    main: "./cmd/fusion"
-    binary: "fusion"
-    goos:
-      - linux
-      - windows
-      - darwin
-  - id: "fusionctl"
-    main: "./cmd/fusionctl"
-    binary: "fusionctl"
-    goos:
-      - linux
-      - windows
-      - darwin
+- id: "fusion"
+  main: "./cmd/fusion"
+  binary: "fusion"
+  goos:
+  - linux
+  - windows
+  - darwin
+- id: "fusionctl"
+  main: "./cmd/fusionctl"
+  binary: "fusionctl"
+  goos:
+  - linux
+  - windows
+  - darwin
 brews:
-  - name: fusion
-    homepage: "https://github.com/SlalomBuild/fusion"
-    description: "Generate secure by default cloud infrastructure configuration with Go and Terraform"
-    license: "MIT"
-    goarm: "6"
-    tap:
-      owner: SlalomBuild
-      name: fusion
-    url_template: "https://github.com/SlalomBuild/fusion/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
-    commit_author:
-      name: goreleaserbot
-      email: bot@goreleaser.com
+- name: fusion
+  homepage: "https://github.com/slalombuild/fusion"
+  description: "Generate secure by default cloud infrastructure configuration with Go and Terraform"
+  license: "MIT"
+  goarm: "6"
+  tap:
+    owner: slalombuild
+    name: fusion
+  url_template: "https://github.com/slalombuild/fusion/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+  commit_author:
+    name: goreleaserbot
+    email: bot@goreleaser.com
 
 scoop:
-    url_template: "https://github.com/SlalomBuild/fusion/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
-    bucket:
-      owner: SlalomBuild
-      name: fusion
-    commit_author:
-      name: goreleaserbot
-      email: bot@goreleaser.com
+  url_template: "https://github.com/slalombuild/fusion/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+  bucket:
+    owner: slalombuild
+    name: fusion
+  commit_author:
+    name: goreleaserbot
+    email: bot@goreleaser.com
 
 checksum:
   name_template: "checksums.txt"
@@ -46,18 +46,18 @@ snapshot:
 changelog:
   sort: asc
   groups:
-    - title: Features
-      regexp: "^.*feat[(\\w)]*:+.*$"
-      order: 0
-    - title: 'Bug fixes'
-      regexp: "^.*fix[(\\w)]*:+.*$"
-      order: 1
-    - title: Others
-      order: 999
+  - title: Features
+    regexp: "^.*feat[(\\w)]*:+.*$"
+    order: 0
+  - title: 'Bug fixes'
+    regexp: "^.*fix[(\\w)]*:+.*$"
+    order: 1
+  - title: Others
+    order: 999
 
   filters:
     exclude:
-      - "^docs:"
-      - "^test:"
-      - "^images:"
-      - "^_examples:"
+    - "^docs:"
+    - "^test:"
+    - "^images:"
+    - "^_examples:"

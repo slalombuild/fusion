@@ -1,6 +1,7 @@
 package generate
 
 import (
+	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -84,7 +85,7 @@ func TestOutputPath(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := OutputPath(tt.args.destination, tt.args.provider, tt.args.resource)
-			assert.Equal(t, tt.want, got)
+			assert.Equal(t, filepath.Join(tt.want), got)
 		})
 	}
 }

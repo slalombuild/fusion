@@ -3,7 +3,7 @@
 # generate
 
 ```go
-import "github.com/SlalomBuild/fusion/internal/generate"
+import "github.com/slalombuild/fusion/internal/generate"
 ```
 
 ## Index
@@ -24,7 +24,7 @@ import "github.com/SlalomBuild/fusion/internal/generate"
 
 ```go
 const (
-    MODULE_FUSION    = "github.com/SlalomBuild/fusion/"
+    MODULE_FUSION    = "github.com/slalombuild/fusion/"
     MODULE_ZEROLOG   = "github.com/rs/zerolog/log"
     MODULE_ERRORS    = "github.com/pkg/errors"
     MODULE_TEMPLATES = MODULE_FUSION + "templates"
@@ -42,7 +42,7 @@ var (
 )
 ```
 
-## func [Command](<https://github.com/SlalomBuild/fusion/blob/main/internal/generate/generate.go#L24>)
+## func [Command](<https://github.com/slalombuild/fusion/blob/main/internal/generate/generate.go#L24>)
 
 ```go
 func Command(provider, resource string) string
@@ -50,7 +50,7 @@ func Command(provider, resource string) string
 
 Command generates source code for a new resource command
 
-## func [CommandName](<https://github.com/SlalomBuild/fusion/blob/main/internal/generate/path.go#L86>)
+## func [CommandName](<https://github.com/slalombuild/fusion/blob/main/internal/generate/path.go#L86>)
 
 ```go
 func CommandName(name string) string
@@ -58,19 +58,19 @@ func CommandName(name string) string
 
 CommandName properly formats the name of the go command from the provided resource
 
-## func [CommandRunFunc](<https://github.com/SlalomBuild/fusion/blob/main/internal/generate/generate.go#L41>)
+## func [CommandRunFunc](<https://github.com/slalombuild/fusion/blob/main/internal/generate/generate.go#L41>)
 
 ```go
 func CommandRunFunc(resource string) jen.Code
 ```
 
-## func [OutputPath](<https://github.com/SlalomBuild/fusion/blob/main/internal/generate/path.go#L28>)
+## func [OutputPath](<https://github.com/slalombuild/fusion/blob/main/internal/generate/path.go#L28>)
 
 ```go
 func OutputPath(destination Destination, provider, resource string) string
 ```
 
-## func [Save](<https://github.com/SlalomBuild/fusion/blob/main/internal/generate/path.go#L56>)
+## func [Save](<https://github.com/slalombuild/fusion/blob/main/internal/generate/path.go#L56>)
 
 ```go
 func Save(path string, content []byte) error
@@ -78,13 +78,13 @@ func Save(path string, content []byte) error
 
 Save saves a file and directory path if it does not exist
 
-## func [Template](<https://github.com/SlalomBuild/fusion/blob/main/internal/generate/generate.go#L134>)
+## func [Template](<https://github.com/slalombuild/fusion/blob/main/internal/generate/generate.go#L134>)
 
 ```go
 func Template(fields map[string]string, sourceFile string) []byte
 ```
 
-## func [TemplateData](<https://github.com/SlalomBuild/fusion/blob/main/internal/generate/generate.go#L75>)
+## func [TemplateData](<https://github.com/slalombuild/fusion/blob/main/internal/generate/generate.go#L75>)
 
 ```go
 func TemplateData(fields map[string]string, provider, resource string) string
@@ -92,7 +92,7 @@ func TemplateData(fields map[string]string, provider, resource string) string
 
 TemplateData generates source code for rendering template data
 
-## type [Destination](<https://github.com/SlalomBuild/fusion/blob/main/internal/generate/path.go#L20>)
+## type [Destination](<https://github.com/slalombuild/fusion/blob/main/internal/generate/path.go#L20>)
 
 ```go
 type Destination int

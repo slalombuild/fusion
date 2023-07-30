@@ -3,7 +3,7 @@
 # awscmd
 
 ```go
-import "github.com/SlalomBuild/fusion/internal/commands/awscmd"
+import "github.com/slalombuild/fusion/internal/commands/awscmd"
 ```
 
 ### Package awscmd contains all commands for the aws section of the fusion cli
@@ -19,6 +19,8 @@ AWS commands can be executed with fusion new aws
 - [type Globals](<#type-globals>)
 - [type NewAPIGatewayCmd](<#type-newapigatewaycmd>)
   - [func (cmd *NewAPIGatewayCmd) Run(ctx *commands.Context) error](<#func-newapigatewaycmd-run>)
+- [type NewAWSServerlessWebsiteCmd](<#type-newawsserverlesswebsitecmd>)
+  - [func (cmd *NewAWSServerlessWebsiteCmd) Run(ctx *commands.Context) error](<#func-newawsserverlesswebsitecmd-run>)
 - [type NewCloudfrontCmd](<#type-newcloudfrontcmd>)
   - [func (cmd *NewCloudfrontCmd) Run(ctx *commands.Context) error](<#func-newcloudfrontcmd-run>)
 - [type NewIamPolicyCmd](<#type-newiampolicycmd>)
@@ -29,8 +31,8 @@ AWS commands can be executed with fusion new aws
   - [func (cmd *NewRoute53ZoneCmd) Run(ctx *commands.Context) error](<#func-newroute53zonecmd-run>)
 - [type NewS3BucketCmd](<#type-news3bucketcmd>)
   - [func (cmd *NewS3BucketCmd) Run(ctx *commands.Context) error](<#func-news3bucketcmd-run>)
-- [type NewServerlessStackCmd](<#type-newserverlessstackcmd>)
-  - [func (cmd *NewServerlessStackCmd) Run(ctx *commands.Context) error](<#func-newserverlessstackcmd-run>)
+- [type NewSecurityGroupCmd](<#type-newsecuritygroupcmd>)
+  - [func (cmd *NewSecurityGroupCmd) Run(ctx *commands.Context) error](<#func-newsecuritygroupcmd-run>)
 - [type NewVpcStackCmd](<#type-newvpcstackcmd>)
   - [func (cmd *NewVpcStackCmd) Run(ctx *commands.Context) error](<#func-newvpcstackcmd-run>)
 
@@ -44,27 +46,28 @@ var (
 )
 ```
 
-## type [AWS](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws.go#L13-L27>)
+## type [AWS](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws.go#L13-L28>)
 
 ```go
 type AWS struct {
     Stack struct {
-        ServerlessWebsite NewServerlessStackCmd `cmd:"" help:"Create new AWS static website w/ serverless backend"`
+        ServerlessWebsite NewAWSServerlessWebsiteCmd `cmd:"" help:"Create new AWS static website w/ serverless backend"`
     }   `cmd:"" help:"Create new stacks of resources"`
 
     Resource struct {
-        S3Bucket   NewS3BucketCmd    `cmd:"" help:"Create new AWS S3 bucket" name:"s3_bucket"`
-        Cloudfront NewCloudfrontCmd  `cmd:"" help:"Create new AWS cloudfront distribution"`
-        Route53    NewRoute53ZoneCmd `cmd:"" help:"Create new AWS route53 hosted zone"`
-        Lambda     NewLambdaCommand  `cmd:"" help:"Create new AWS lambda function"`
-        IamPolicy  NewIamPolicyCmd   `cmd:"" help:"Create new AWS IAM policy"`
-        ApiGateway NewAPIGatewayCmd  `cmd:"" help:"Create new AWS API gateway v2"`
-        VpcStack   NewVpcStackCmd    `cmd:"" help:"Create new VPC with public & private subnets, igws, & NAT gateways"`
+        SecurityGroup NewSecurityGroupCmd `cmd:"" help:"Create new AWS Security Group"`
+        S3Bucket      NewS3BucketCmd      `cmd:"" help:"Create new AWS S3 bucket" name:"s3_bucket"`
+        Cloudfront    NewCloudfrontCmd    `cmd:"" help:"Create new AWS cloudfront distribution"`
+        Route53       NewRoute53ZoneCmd   `cmd:"" help:"Create new AWS route53 hosted zone"`
+        Lambda        NewLambdaCommand    `cmd:"" help:"Create new AWS lambda function"`
+        IamPolicy     NewIamPolicyCmd     `cmd:"" help:"Create new AWS IAM policy"`
+        ApiGateway    NewAPIGatewayCmd    `cmd:"" help:"Create new AWS API gateway v2"`
+        VpcStack      NewVpcStackCmd      `cmd:"" help:"Create new VPC with public & private subnets, igws, & NAT gateways"`
     }   `cmd:"" help:"Create new single resource"`
 }
 ```
 
-## type [Globals](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws.go#L9-L11>)
+## type [Globals](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws.go#L9-L11>)
 
 ```go
 type Globals struct {
@@ -72,7 +75,7 @@ type Globals struct {
 }
 ```
 
-## type [NewAPIGatewayCmd](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_api_gateway.go#L9-L12>)
+## type [NewAPIGatewayCmd](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_api_gateway.go#L9-L12>)
 
 NewAPIGatewayv2Cmd creates a new api\_gatewayv2
 
@@ -83,13 +86,30 @@ type NewAPIGatewayCmd struct {
 }
 ```
 
-### func \(\*NewAPIGatewayCmd\) [Run](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_api_gateway.go#L14>)
+### func \(\*NewAPIGatewayCmd\) [Run](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_api_gateway.go#L14>)
 
 ```go
 func (cmd *NewAPIGatewayCmd) Run(ctx *commands.Context) error
 ```
 
-## type [NewCloudfrontCmd](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_cloudfront.go#L9-L12>)
+## type [NewAWSServerlessWebsiteCmd](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_serverless_website.go#L9-L12>)
+
+NewAWSServerlessWebsiteCmd creates a new ServerlessWebsite
+
+```go
+type NewAWSServerlessWebsiteCmd struct {
+    Globals
+    *stacks.ServerlessWebsite `embed:""`
+}
+```
+
+### func \(\*NewAWSServerlessWebsiteCmd\) [Run](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_serverless_website.go#L14>)
+
+```go
+func (cmd *NewAWSServerlessWebsiteCmd) Run(ctx *commands.Context) error
+```
+
+## type [NewCloudfrontCmd](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_cloudfront.go#L9-L12>)
 
 NewCloudfrontCmd creates a new CloudFront
 
@@ -100,13 +120,13 @@ type NewCloudfrontCmd struct {
 }
 ```
 
-### func \(\*NewCloudfrontCmd\) [Run](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_cloudfront.go#L14>)
+### func \(\*NewCloudfrontCmd\) [Run](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_cloudfront.go#L14>)
 
 ```go
 func (cmd *NewCloudfrontCmd) Run(ctx *commands.Context) error
 ```
 
-## type [NewIamPolicyCmd](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_iam_policy.go#L9-L12>)
+## type [NewIamPolicyCmd](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_iam_policy.go#L9-L12>)
 
 NewIamPolicyCmd creates a new iam\_policy
 
@@ -117,13 +137,13 @@ type NewIamPolicyCmd struct {
 }
 ```
 
-### func \(\*NewIamPolicyCmd\) [Run](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_iam_policy.go#L14>)
+### func \(\*NewIamPolicyCmd\) [Run](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_iam_policy.go#L14>)
 
 ```go
 func (cmd *NewIamPolicyCmd) Run(ctx *commands.Context) error
 ```
 
-## type [NewLambdaCommand](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_lambda.go#L16-L20>)
+## type [NewLambdaCommand](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_lambda.go#L16-L20>)
 
 ```go
 type NewLambdaCommand struct {
@@ -133,13 +153,13 @@ type NewLambdaCommand struct {
 }
 ```
 
-### func \(\*NewLambdaCommand\) [Run](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_lambda.go#L22>)
+### func \(\*NewLambdaCommand\) [Run](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_lambda.go#L22>)
 
 ```go
 func (cmd *NewLambdaCommand) Run(ctx *commands.Context) error
 ```
 
-## type [NewRoute53ZoneCmd](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_route53_zone.go#L9-L12>)
+## type [NewRoute53ZoneCmd](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_route53_zone.go#L9-L12>)
 
 NewRoute53ZoneCmd creates a new route53\_zone
 
@@ -150,13 +170,13 @@ type NewRoute53ZoneCmd struct {
 }
 ```
 
-### func \(\*NewRoute53ZoneCmd\) [Run](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_route53_zone.go#L14>)
+### func \(\*NewRoute53ZoneCmd\) [Run](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_route53_zone.go#L14>)
 
 ```go
 func (cmd *NewRoute53ZoneCmd) Run(ctx *commands.Context) error
 ```
 
-## type [NewS3BucketCmd](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_s3_bucket.go#L9-L12>)
+## type [NewS3BucketCmd](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_s3_bucket.go#L9-L12>)
 
 NewS3BucketCmd creates a new s3\_bucket
 
@@ -167,30 +187,30 @@ type NewS3BucketCmd struct {
 }
 ```
 
-### func \(\*NewS3BucketCmd\) [Run](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_s3_bucket.go#L14>)
+### func \(\*NewS3BucketCmd\) [Run](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_s3_bucket.go#L14>)
 
 ```go
 func (cmd *NewS3BucketCmd) Run(ctx *commands.Context) error
 ```
 
-## type [NewServerlessStackCmd](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_serverless_stack.go#L9-L12>)
+## type [NewSecurityGroupCmd](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_securitygroup.go#L9-L12>)
 
-NewServerlessStackCmd creates a new api\_gatewayv2
+NewSecurityGroupCmd creates a new SecurityGroup
 
 ```go
-type NewServerlessStackCmd struct {
+type NewSecurityGroupCmd struct {
     Globals
-    *stacks.ServerlessWebsite `embed:""`
+    *aws.SecurityGroup `embed:""`
 }
 ```
 
-### func \(\*NewServerlessStackCmd\) [Run](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_serverless_stack.go#L14>)
+### func \(\*NewSecurityGroupCmd\) [Run](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_securitygroup.go#L14>)
 
 ```go
-func (cmd *NewServerlessStackCmd) Run(ctx *commands.Context) error
+func (cmd *NewSecurityGroupCmd) Run(ctx *commands.Context) error
 ```
 
-## type [NewVpcStackCmd](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_vpc_stack.go#L9-L12>)
+## type [NewVpcStackCmd](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_vpc_stack.go#L9-L12>)
 
 NewVpcStackCmd creates a new vpc\_stack
 
@@ -201,7 +221,7 @@ type NewVpcStackCmd struct {
 }
 ```
 
-### func \(\*NewVpcStackCmd\) [Run](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_vpc_stack.go#L14>)
+### func \(\*NewVpcStackCmd\) [Run](<https://github.com/slalombuild/fusion/blob/main/internal/commands/awscmd/cmd_aws_new_vpc_stack.go#L14>)
 
 ```go
 func (cmd *NewVpcStackCmd) Run(ctx *commands.Context) error

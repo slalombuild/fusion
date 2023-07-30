@@ -3,7 +3,7 @@
 # azurecmd
 
 ```go
-import "github.com/SlalomBuild/fusion/internal/commands/azurecmd"
+import "github.com/slalombuild/fusion/internal/commands/azurecmd"
 ```
 
 ### Package azurecmd contains all commands for the aws section of the fusion cli
@@ -32,7 +32,7 @@ var (
 )
 ```
 
-## type [Azure](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/azurecmd/cmd_azure.go#L13-L16>)
+## type [Azure](<https://github.com/slalombuild/fusion/blob/main/internal/commands/azurecmd/cmd_azure.go#L13-L16>)
 
 ```go
 type Azure struct {
@@ -41,7 +41,7 @@ type Azure struct {
 }
 ```
 
-## type [Globals](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/azurecmd/cmd_azure.go#L9-L11>)
+## type [Globals](<https://github.com/slalombuild/fusion/blob/main/internal/commands/azurecmd/cmd_azure.go#L9-L11>)
 
 ```go
 type Globals struct {
@@ -49,7 +49,7 @@ type Globals struct {
 }
 ```
 
-## type [NewFunctionCommand](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/azurecmd/cmd_azure_new_function.go#L12-L15>)
+## type [NewFunctionCommand](<https://github.com/slalombuild/fusion/blob/main/internal/commands/azurecmd/cmd_azure_new_function.go#L12-L15>)
 
 ```go
 type NewFunctionCommand struct {
@@ -58,13 +58,13 @@ type NewFunctionCommand struct {
 }
 ```
 
-### func \(\*NewFunctionCommand\) [Run](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/azurecmd/cmd_azure_new_function.go#L17>)
+### func \(\*NewFunctionCommand\) [Run](<https://github.com/slalombuild/fusion/blob/main/internal/commands/azurecmd/cmd_azure_new_function.go#L17>)
 
 ```go
 func (cmd *NewFunctionCommand) Run(ctx *commands.Context) error
 ```
 
-## type [NewVnetCommand](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/azurecmd/cmd_azure_new_vnet.go#L17-L19>)
+## type [NewVnetCommand](<https://github.com/slalombuild/fusion/blob/main/internal/commands/azurecmd/cmd_azure_new_vnet.go#L17-L19>)
 
 NewVnetCmd creates a new vnet
 
@@ -74,7 +74,7 @@ type NewVnetCommand struct {
 }
 ```
 
-### func \(\*NewVnetCommand\) [Run](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/azurecmd/cmd_azure_new_vnet.go#L21>)
+### func \(\*NewVnetCommand\) [Run](<https://github.com/slalombuild/fusion/blob/main/internal/commands/azurecmd/cmd_azure_new_vnet.go#L21>)
 
 ```go
 func (cmd *NewVnetCommand) Run(ctx *commands.Context) error

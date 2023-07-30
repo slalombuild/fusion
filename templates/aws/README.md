@@ -3,7 +3,7 @@
 # aws
 
 ```go
-import "github.com/SlalomBuild/fusion/templates/aws"
+import "github.com/slalombuild/fusion/templates/aws"
 ```
 
 Package aws provides terraform templates for Amazon Web Services \(AWS\)
@@ -24,41 +24,63 @@ Package aws provides terraform templates for Amazon Web Services \(AWS\)
   - [func (resource *Route53HostedZone) Render(w io.Writer, skipColor bool) error](<#func-route53hostedzone-render>)
 - [type S3Bucket](<#type-s3bucket>)
   - [func (resource *S3Bucket) Render(w io.Writer, skipColor bool) error](<#func-s3bucket-render>)
+- [type SecurityGroup](<#type-securitygroup>)
+  - [func (resource *SecurityGroup) Render(w io.Writer, skipColor bool) error](<#func-securitygroup-render>)
 - [type VPC](<#type-vpc>)
   - [func (resource *VPC) Render(w io.Writer, skipColor bool) error](<#func-vpc-render>)
 
 
 ## Variables
 
+go:embed aws\_api\_gateway\.tmpl
+
 ```go
 var TEMPLATE_AWS_API_GATEWAY string
 ```
+
+go:embed aws\_cloudfront\_distribution\.tmpl
 
 ```go
 var TEMPLATE_AWS_CLOUDFRONT_DISTRIBUTION string
 ```
 
+go:embed aws\_iam\_policy\.tmpl
+
 ```go
 var TEMPLATE_AWS_IAM_POLICY string
 ```
+
+go:embed aws\_lambda\_function\.tmpl
 
 ```go
 var TEMPLATE_AWS_LAMBDA_FUNCTION string
 ```
 
+go:embed aws\_route53\_hosted\_zone\.tmpl
+
 ```go
 var TEMPLATE_AWS_ROUTE53_ZONE string
 ```
+
+go:embed aws\_s3\_bucket\.tmpl
 
 ```go
 var TEMPLATE_AWS_S3_BUCKET string
 ```
 
+go:embed aws\_securitygroup\.tmpl
+
+```go
+var TEMPLATE_AWS_SECURITY_GROUP string
+```
+
+go:embed aws\_vpc\.tmpl
+
 ```go
 var TEMPLATE_AWS_VPC string
 ```
 
-## type [APIGateway](<https://github.com/SlalomBuild/fusion/blob/main/templates/aws/aws_api_gateway.go#L18-L22>)
+## type [APIGateway](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_api_gateway.go#L18-L22>)
 
 View the Kong CLI docs to see options for your command's flags and arguments https://github.com/alecthomas/kong#flags
 
@@ -70,7 +92,7 @@ type APIGateway struct {
 }
 ```
 
-### func \(\*APIGateway\) [Render](<https://github.com/SlalomBuild/fusion/blob/main/templates/aws/aws_api_gateway.go#L25>)
+### func \(\*APIGateway\) [Render](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_api_gateway.go#L25>)
 
 ```go
 func (resource *APIGateway) Render(w io.Writer, skipColor bool) error
@@ -78,7 +100,7 @@ func (resource *APIGateway) Render(w io.Writer, skipColor bool) error
 
 Render generates the Terraform code for the APIGatewayv2
 
-## type [CloudfrontDistribution](<https://github.com/SlalomBuild/fusion/blob/main/templates/aws/aws_cloudfront_distribution.go#L18-L22>)
+## type [CloudfrontDistribution](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_cloudfront_distribution.go#L18-L22>)
 
 View the Kong CLI docs to see options for your command's flags and arguments https://github.com/alecthomas/kong#flags
 
@@ -90,7 +112,7 @@ type CloudfrontDistribution struct {
 }
 ```
 
-### func \(\*CloudfrontDistribution\) [Render](<https://github.com/SlalomBuild/fusion/blob/main/templates/aws/aws_cloudfront_distribution.go#L25>)
+### func \(\*CloudfrontDistribution\) [Render](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_cloudfront_distribution.go#L25>)
 
 ```go
 func (resource *CloudfrontDistribution) Render(w io.Writer, skipColor bool) error
@@ -98,7 +120,7 @@ func (resource *CloudfrontDistribution) Render(w io.Writer, skipColor bool) erro
 
 Render generates the Terraform code for the CloudFront
 
-## type [IamPolicy](<https://github.com/SlalomBuild/fusion/blob/main/templates/aws/aws_iam_policy.go#L18-L23>)
+## type [IamPolicy](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_iam_policy.go#L18-L23>)
 
 View the Kong CLI docs to see options for your command's flags and arguments https://github.com/alecthomas/kong#flags
 
@@ -111,7 +133,7 @@ type IamPolicy struct {
 }
 ```
 
-### func \(\*IamPolicy\) [Render](<https://github.com/SlalomBuild/fusion/blob/main/templates/aws/aws_iam_policy.go#L26>)
+### func \(\*IamPolicy\) [Render](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_iam_policy.go#L26>)
 
 ```go
 func (resource *IamPolicy) Render(w io.Writer, skipColor bool) error
@@ -167,7 +189,7 @@ Render generates the Terraform code for the IamPolicy
 </p>
 </details>
 
-## type [LambdaFunction](<https://github.com/SlalomBuild/fusion/blob/main/templates/aws/aws_lambda_function.go#L16-L21>)
+## type [LambdaFunction](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_lambda_function.go#L16-L21>)
 
 LambdaFunction is the template data object used to create a lambda function
 
@@ -180,7 +202,7 @@ type LambdaFunction struct {
 }
 ```
 
-### func [NewLambdaFunction](<https://github.com/SlalomBuild/fusion/blob/main/templates/aws/aws_lambda_function.go#L24>)
+### func [NewLambdaFunction](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_lambda_function.go#L24>)
 
 ```go
 func NewLambdaFunction(name, filename, handler, runtime string) *LambdaFunction
@@ -188,7 +210,7 @@ func NewLambdaFunction(name, filename, handler, runtime string) *LambdaFunction
 
 NewLambdaFunction creates new lambda function
 
-### func \(\*LambdaFunction\) [Render](<https://github.com/SlalomBuild/fusion/blob/main/templates/aws/aws_lambda_function.go#L34>)
+### func \(\*LambdaFunction\) [Render](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_lambda_function.go#L34>)
 
 ```go
 func (resource *LambdaFunction) Render(w io.Writer, skipColor bool) error
@@ -219,7 +241,7 @@ Render generates the Terraform code for the LambdaFunction
 </p>
 </details>
 
-## type [Route53HostedZone](<https://github.com/SlalomBuild/fusion/blob/main/templates/aws/aws_route53_hosted_zone.go#L18-L21>)
+## type [Route53HostedZone](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_route53_hosted_zone.go#L18-L21>)
 
 View the Kong CLI docs to see options for your command's flags and arguments https://github.com/alecthomas/kong#flags
 
@@ -230,7 +252,7 @@ type Route53HostedZone struct {
 }
 ```
 
-### func \(\*Route53HostedZone\) [Render](<https://github.com/SlalomBuild/fusion/blob/main/templates/aws/aws_route53_hosted_zone.go#L24>)
+### func \(\*Route53HostedZone\) [Render](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_route53_hosted_zone.go#L24>)
 
 ```go
 func (resource *Route53HostedZone) Render(w io.Writer, skipColor bool) error
@@ -238,7 +260,7 @@ func (resource *Route53HostedZone) Render(w io.Writer, skipColor bool) error
 
 Render generates the Terraform code for the Route53Stack
 
-## type [S3Bucket](<https://github.com/SlalomBuild/fusion/blob/main/templates/aws/aws_s3_bucket.go#L18-L22>)
+## type [S3Bucket](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_s3_bucket.go#L18-L22>)
 
 View the Kong CLI docs to see options for your command's flags and arguments https://github.com/alecthomas/kong#flags
 
@@ -250,7 +272,7 @@ type S3Bucket struct {
 }
 ```
 
-### func \(\*S3Bucket\) [Render](<https://github.com/SlalomBuild/fusion/blob/main/templates/aws/aws_s3_bucket.go#L25>)
+### func \(\*S3Bucket\) [Render](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_s3_bucket.go#L25>)
 
 ```go
 func (resource *S3Bucket) Render(w io.Writer, skipColor bool) error
@@ -258,7 +280,26 @@ func (resource *S3Bucket) Render(w io.Writer, skipColor bool) error
 
 Render generates the Terraform code for the S3Bucket
 
-## type [VPC](<https://github.com/SlalomBuild/fusion/blob/main/templates/aws/aws_vpc.go#L18-L22>)
+## type [SecurityGroup](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_securitygroup.go#L18-L21>)
+
+View the Kong CLI docs to see options for your command's flags and arguments https://github.com/alecthomas/kong#flags
+
+```go
+type SecurityGroup struct {
+    PublicIngressPort     int    `help:"Public ingress port for the security group"`
+    PublicIngressProtocol string `help:"Public ingress protocol for the security group"`
+}
+```
+
+### func \(\*SecurityGroup\) [Render](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_securitygroup.go#L24>)
+
+```go
+func (resource *SecurityGroup) Render(w io.Writer, skipColor bool) error
+```
+
+Render generates the Terraform code for the SecurityGroup
+
+## type [VPC](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_vpc.go#L18-L22>)
 
 View the Kong CLI docs to see options for your command's flags and arguments https://github.com/alecthomas/kong#flags
 
@@ -270,7 +311,7 @@ type VPC struct {
 }
 ```
 
-### func \(\*VPC\) [Render](<https://github.com/SlalomBuild/fusion/blob/main/templates/aws/aws_vpc.go#L25>)
+### func \(\*VPC\) [Render](<https://github.com/slalombuild/fusion/blob/main/templates/aws/aws_vpc.go#L25>)
 
 ```go
 func (resource *VPC) Render(w io.Writer, skipColor bool) error

@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	MODULE_FUSION    = "github.com/SlalomBuild/fusion/"
+	MODULE_FUSION    = "github.com/slalombuild/fusion/"
 	MODULE_ZEROLOG   = "github.com/rs/zerolog/log"
 	MODULE_ERRORS    = "github.com/pkg/errors"
 	MODULE_TEMPLATES = MODULE_FUSION + "templates"
