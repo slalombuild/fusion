@@ -6,13 +6,6 @@ builds:
   - linux
   - windows
   - darwin
-- id: "fusionctl"
-  main: "./cmd/fusionctl"
-  binary: "fusionctl"
-  goos:
-  - linux
-  - windows
-  - darwin
 brews:
 - name: fusion
   homepage: "https://github.com/slalombuild/fusion"
@@ -28,7 +21,8 @@ brews:
     email: bot@goreleaser.com
 
 scoops:
-- url_template: "https://github.com/slalombuild/fusion/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+- name: fusion
+  url_template: "https://github.com/slalombuild/fusion/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
   repository:
     owner: slalombuild
     name: fusion
