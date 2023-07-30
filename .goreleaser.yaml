@@ -9,6 +9,10 @@ builds:
   - linux
   - windows
   - darwin
+  goarch:
+  - amd64
+  - arm
+  - arm64
 - id: "fusionctl"
   main: "./cmd/fusionctl"
   binary: "fusionctl"
@@ -16,13 +20,16 @@ builds:
   - linux
   - windows
   - darwin
+  goarch:
+  - amd64
+  - arm64
 brews:
 - name: fusion
   homepage: "https://github.com/slalombuild/fusion"
   description: "Generate secure by default cloud infrastructure configuration with Go and Terraform"
   license: "MIT"
   goarm: "6"
-  tap:
+  repository:
     owner: slalombuild
     name: fusion
   url_template: "https://github.com/slalombuild/fusion/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
@@ -30,9 +37,9 @@ brews:
     name: goreleaserbot
     email: bot@goreleaser.com
 
-scoop:
-  url_template: "https://github.com/slalombuild/fusion/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
-  bucket:
+scoops:
+- url_template: "https://github.com/slalombuild/fusion/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+  repository:
     owner: slalombuild
     name: fusion
   commit_author:
