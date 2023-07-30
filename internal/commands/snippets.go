@@ -5,10 +5,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	snippets "github.com/SlalomBuild/fusion/snippets"
-	"github.com/SlalomBuild/fusion/templates"
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog/log"
+	snippets "github.com/slalombuild/fusion/snippets"
+	"github.com/slalombuild/fusion/templates"
 )
 
 const (
@@ -40,8 +40,7 @@ func (g *GenerateSnippetsCommand) Validate() error {
 }
 
 // writeSnippets either writes snippets to a given file
-// or to stdout if given '' for --output
-//
+// or to stdout if given ” for --output
 func writeSnippets(g *GenerateSnippetsCommand) error {
 	var err error
 

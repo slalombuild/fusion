@@ -6,10 +6,10 @@ import (
 	"os"
 	"time"
 
-	"github.com/SlalomBuild/fusion/templates"
-	"github.com/SlalomBuild/fusion/terraform"
 	"github.com/briandowns/spinner"
 	"github.com/pkg/errors"
+	"github.com/slalombuild/fusion/templates"
+	"github.com/slalombuild/fusion/terraform"
 )
 
 func Graph(ctx *Context, r templates.Renderer) error {

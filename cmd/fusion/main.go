@@ -3,15 +3,15 @@ package main
 import (
 	"os"
 
-	"github.com/SlalomBuild/fusion/internal/commands"
-	"github.com/SlalomBuild/fusion/internal/commands/awscmd"
-	"github.com/SlalomBuild/fusion/internal/commands/azurecmd"
-	"github.com/SlalomBuild/fusion/internal/commands/gcpcmd"
-	"github.com/SlalomBuild/fusion/internal/resolver"
 	"github.com/alecthomas/kong"
 	"github.com/pkg/errors"
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
+	"github.com/slalombuild/fusion/internal/commands"
+	"github.com/slalombuild/fusion/internal/commands/awscmd"
+	"github.com/slalombuild/fusion/internal/commands/azurecmd"
+	"github.com/slalombuild/fusion/internal/commands/gcpcmd"
+	"github.com/slalombuild/fusion/internal/resolver"
 	"github.com/willabides/kongplete"
 )
 

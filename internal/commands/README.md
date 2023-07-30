@@ -3,7 +3,7 @@
 # commands
 
 ```go
-import "github.com/SlalomBuild/fusion/internal/commands"
+import "github.com/slalombuild/fusion/internal/commands"
 ```
 
 ## Index
@@ -36,13 +36,13 @@ const (
 )
 ```
 
-## func [Graph](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/graph.go#L15>)
+## func [Graph](<https://github.com/slalombuild/fusion/blob/main/internal/commands/graph.go#L15>)
 
 ```go
 func Graph(ctx *Context, r templates.Renderer) error
 ```
 
-## type [Context](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/context.go#L10-L16>)
+## type [Context](<https://github.com/slalombuild/fusion/blob/main/internal/commands/context.go#L10-L16>)
 
 ```go
 type Context struct {
@@ -54,7 +54,7 @@ type Context struct {
 }
 ```
 
-## type [GenerateSnippetsCommand](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/snippets.go#L19-L23>)
+## type [GenerateSnippetsCommand](<https://github.com/slalombuild/fusion/blob/main/internal/commands/snippets.go#L19-L23>)
 
 ```go
 type GenerateSnippetsCommand struct {
@@ -64,19 +64,19 @@ type GenerateSnippetsCommand struct {
 }
 ```
 
-### func \(\*GenerateSnippetsCommand\) [Run](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/snippets.go#L25>)
+### func \(\*GenerateSnippetsCommand\) [Run](<https://github.com/slalombuild/fusion/blob/main/internal/commands/snippets.go#L25>)
 
 ```go
 func (g *GenerateSnippetsCommand) Run() error
 ```
 
-### func \(\*GenerateSnippetsCommand\) [Validate](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/snippets.go#L32>)
+### func \(\*GenerateSnippetsCommand\) [Validate](<https://github.com/slalombuild/fusion/blob/main/internal/commands/snippets.go#L32>)
 
 ```go
 func (g *GenerateSnippetsCommand) Validate() error
 ```
 
-## type [NoColorFlag](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/context.go#L43>)
+## type [NoColorFlag](<https://github.com/slalombuild/fusion/blob/main/internal/commands/context.go#L43>)
 
 NoColorFlag supports the no\-color environment variable standard to skip colorful output https://no-color.org
 
@@ -84,13 +84,13 @@ NoColorFlag supports the no\-color environment variable standard to skip colorfu
 type NoColorFlag bool
 ```
 
-### func \(NoColorFlag\) [Bool](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/context.go#L45>)
+### func \(NoColorFlag\) [Bool](<https://github.com/slalombuild/fusion/blob/main/internal/commands/context.go#L45>)
 
 ```go
 func (n NoColorFlag) Bool() bool
 ```
 
-## type [NoFormatFlag](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/context.go#L51>)
+## type [NoFormatFlag](<https://github.com/slalombuild/fusion/blob/main/internal/commands/context.go#L51>)
 
 NoFormatFlag supports skipping the formatting
 
@@ -98,19 +98,19 @@ NoFormatFlag supports skipping the formatting
 type NoFormatFlag bool
 ```
 
-### func \(NoFormatFlag\) [Bool](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/context.go#L53>)
+### func \(NoFormatFlag\) [Bool](<https://github.com/slalombuild/fusion/blob/main/internal/commands/context.go#L53>)
 
 ```go
 func (n NoFormatFlag) Bool() bool
 ```
 
-## type [OutputFlag](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/context.go#L18>)
+## type [OutputFlag](<https://github.com/slalombuild/fusion/blob/main/internal/commands/context.go#L18>)
 
 ```go
 type OutputFlag io.Writer
 ```
 
-## type [VerboseFlag](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/context.go#L34>)
+## type [VerboseFlag](<https://github.com/slalombuild/fusion/blob/main/internal/commands/context.go#L34>)
 
 VerboseFlag is a flag with a hook that\, if triggered\, will set the debug loggers output to stdout\.
 
@@ -118,31 +118,31 @@ VerboseFlag is a flag with a hook that\, if triggered\, will set the debug logge
 type VerboseFlag bool
 ```
 
-### func \(VerboseFlag\) [Bool](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/context.go#L36>)
+### func \(VerboseFlag\) [Bool](<https://github.com/slalombuild/fusion/blob/main/internal/commands/context.go#L36>)
 
 ```go
 func (v VerboseFlag) Bool() bool
 ```
 
-## type [VersionFlag](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/context.go#L20>)
+## type [VersionFlag](<https://github.com/slalombuild/fusion/blob/main/internal/commands/context.go#L20>)
 
 ```go
 type VersionFlag string
 ```
 
-### func \(VersionFlag\) [BeforeApply](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/context.go#L24>)
+### func \(VersionFlag\) [BeforeApply](<https://github.com/slalombuild/fusion/blob/main/internal/commands/context.go#L24>)
 
 ```go
 func (v VersionFlag) BeforeApply(app *kong.Kong, vars kong.Vars) error
 ```
 
-### func \(VersionFlag\) [Decode](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/context.go#L22>)
+### func \(VersionFlag\) [Decode](<https://github.com/slalombuild/fusion/blob/main/internal/commands/context.go#L22>)
 
 ```go
 func (v VersionFlag) Decode(ctx *kong.DecodeContext) error
 ```
 
-### func \(VersionFlag\) [IsBool](<https://github.com/SlalomBuild/fusion/blob/main/internal/commands/context.go#L23>)
+### func \(VersionFlag\) [IsBool](<https://github.com/slalombuild/fusion/blob/main/internal/commands/context.go#L23>)
 
 ```go
 func (v VersionFlag) IsBool() bool

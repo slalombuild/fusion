@@ -1,9 +1,9 @@
 package awscmd
 
 import (
-	"github.com/SlalomBuild/fusion/internal/commands"
-	"github.com/SlalomBuild/fusion/templates/aws"
 	"github.com/pkg/errors"
+	"github.com/slalombuild/fusion/internal/commands"
+	"github.com/slalombuild/fusion/templates/aws"
 
 	"github.com/rs/zerolog/log"
 )

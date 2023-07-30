@@ -4,8 +4,8 @@ import (
 	_ "embed"
 	"io"
 
-	"github.com/SlalomBuild/fusion/templates"
 	"github.com/pkg/errors"
+	"github.com/slalombuild/fusion/templates"
 )
 
 //go:embed gcp_internal_loadbalancer.tmpl

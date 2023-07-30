@@ -1,8 +1,8 @@
 package awscmd
 
 import (
-	commands "github.com/SlalomBuild/fusion/internal/commands"
-	aws "github.com/SlalomBuild/fusion/templates/aws"
+	commands "github.com/slalombuild/fusion/internal/commands"
+	aws "github.com/slalombuild/fusion/templates/aws"
 )
 
 // NewS3BucketCmd creates a new s3_bucket

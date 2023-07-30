@@ -2,7 +2,7 @@ package ctlcmd
 
 import (
 	"github.com/AlecAivazis/survey/v2"
-	"github.com/SlalomBuild/fusion/internal/commands"
+	"github.com/slalombuild/fusion/internal/commands"
 )
 
 type NewStackCmd struct {

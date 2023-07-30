@@ -4,8 +4,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/SlalomBuild/fusion/snippets"
-	"github.com/SlalomBuild/fusion/templates/aws"
+	"github.com/slalombuild/fusion/snippets"
+	"github.com/slalombuild/fusion/templates/aws"
 )
 
 func ExampleVSCode_NewItem() {

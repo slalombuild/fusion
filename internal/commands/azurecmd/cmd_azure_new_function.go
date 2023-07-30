@@ -3,10 +3,10 @@ package azurecmd
 import (
 	"fmt"
 
-	"github.com/SlalomBuild/fusion/templates"
-	"github.com/SlalomBuild/fusion/templates/azure"
+	"github.com/slalombuild/fusion/templates"
+	"github.com/slalombuild/fusion/templates/azure"
 
-	"github.com/SlalomBuild/fusion/internal/commands"
+	"github.com/slalombuild/fusion/internal/commands"
 )
 
 type NewFunctionCommand struct {

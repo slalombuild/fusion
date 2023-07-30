@@ -1,9 +1,9 @@
 package azurecmd
 
 import (
-	"github.com/SlalomBuild/fusion/internal/commands"
-	"github.com/SlalomBuild/fusion/templates/azure"
 	"github.com/pkg/errors"
+	"github.com/slalombuild/fusion/internal/commands"
+	"github.com/slalombuild/fusion/templates/azure"
 
 	"github.com/rs/zerolog/log"
 )

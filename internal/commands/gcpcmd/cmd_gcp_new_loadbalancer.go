@@ -1,11 +1,11 @@
 package gcpcmd
 
 import (
-	"github.com/SlalomBuild/fusion/templates/gcp"
 	"github.com/pkg/errors"
+	"github.com/slalombuild/fusion/templates/gcp"
 
-	"github.com/SlalomBuild/fusion/internal/commands"
 	"github.com/rs/zerolog/log"
+	"github.com/slalombuild/fusion/internal/commands"
 )
 
 var (

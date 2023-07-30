@@ -3,7 +3,7 @@
 # templates
 
 ```go
-import "github.com/SlalomBuild/fusion/templates"
+import "github.com/slalombuild/fusion/templates"
 ```
 
 Package templates includes go text/templates for terraform resources
@@ -35,11 +35,13 @@ var (
 )
 ```
 
+go:embed aws/\*\.tmpl gcp/\*\.tmpl azure/\*\.tmpl
+
 ```go
 var ALL_TEMPLATES embed.FS
 ```
 
-## func [Execute](<https://github.com/SlalomBuild/fusion/blob/main/templates/execute.go#L19>)
+## func [Execute](<https://github.com/slalombuild/fusion/blob/main/templates/execute.go#L19>)
 
 ```go
 func Execute(templateString string, data interface{}) (*bytes.Buffer, error)
@@ -47,7 +49,7 @@ func Execute(templateString string, data interface{}) (*bytes.Buffer, error)
 
 Execute renders the template string into a buffer and includes some useful helper functions
 
-## func [FormatHCL](<https://github.com/SlalomBuild/fusion/blob/main/templates/templates.go#L24>)
+## func [FormatHCL](<https://github.com/slalombuild/fusion/blob/main/templates/templates.go#L24>)
 
 ```go
 func FormatHCL(template string) string
@@ -55,7 +57,7 @@ func FormatHCL(template string) string
 
 FormatHCL formats an HCL string and trims whitespace
 
-## func [Highlight](<https://github.com/SlalomBuild/fusion/blob/main/templates/highlight.go#L31>)
+## func [Highlight](<https://github.com/slalombuild/fusion/blob/main/templates/highlight.go#L31>)
 
 ```go
 func Highlight(w io.Writer, text string, lang Language, skipColor bool) error
@@ -63,7 +65,7 @@ func Highlight(w io.Writer, text string, lang Language, skipColor bool) error
 
 Highlight and format text
 
-## type [Language](<https://github.com/SlalomBuild/fusion/blob/main/templates/highlight.go#L18>)
+## type [Language](<https://github.com/slalombuild/fusion/blob/main/templates/highlight.go#L18>)
 
 ```go
 type Language int
@@ -77,7 +79,7 @@ const (
 )
 ```
 
-## type [Renderer](<https://github.com/SlalomBuild/fusion/blob/main/templates/templates.go#L18-L20>)
+## type [Renderer](<https://github.com/slalombuild/fusion/blob/main/templates/templates.go#L18-L20>)
 
 Renderer is the required interface for terraform templates to be rendered
 

@@ -7,9 +7,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/SlalomBuild/fusion/templates"
-	"github.com/SlalomBuild/fusion/templates/aws"
-	"github.com/SlalomBuild/fusion/terraform"
+	"github.com/slalombuild/fusion/templates"
+	"github.com/slalombuild/fusion/templates/aws"
+	"github.com/slalombuild/fusion/terraform"
 	"github.com/stretchr/testify/assert"
 )
 

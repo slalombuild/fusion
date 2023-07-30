@@ -1,8 +1,8 @@
 # 🧬 fusion
 
-[![Go Reference](https://pkg.go.dev/badge/github.com/SlalomBuild/fusion.svg)](https://pkg.go.dev/github.com/SlalomBuild/fusion)
-![Latest Release](https://img.shields.io/github/v/release/SlalomBuild/fusion?label=latest%20release)
-[![Go Report Card](https://goreportcard.com/badge/github.com/SlalomBuild/fusion)](https://goreportcard.com/report/github.com/SlalomBuild/fusion)
+[![Go Reference](https://pkg.go.dev/badge/github.com/slalombuild/fusion.svg)](https://pkg.go.dev/github.com/slalombuild/fusion)
+![Latest Release](https://img.shields.io/github/v/release/slalombuild/fusion?label=latest%20release)
+[![Go Report Card](https://goreportcard.com/badge/github.com/slalombuild/fusion)](https://goreportcard.com/report/github.com/slalombuild/fusion)
 
 Generate secure by default cloud infrastructure configuration with Go and Terraform. 
 
@@ -15,13 +15,13 @@ Install the fusion cli
 If you have Go setup on your system, you can install fusion with `go install`
 
 ```shell
-go install github.com/SlalomBuild/fusion/cmd/fusion@latest
+go install github.com/slalombuild/fusion/cmd/fusion@latest
 ```
 
 ### Homebrew
 
 ```shell
-brew tap SlalomBuild/fusion
+brew tap slalombuild/fusion
 brew install fusion
 
 # Optionally install the fusionctl dev tool
@@ -31,7 +31,7 @@ brew install fusionctl
 ### Scoop
 
 ```shell
-scoop bucket add fusion https://github.com/SlalomBuild/fusion.git
+scoop bucket add fusion https://github.com/slalombuild/fusion.git
 scoop install fusion
 ```
 
@@ -101,7 +101,7 @@ fusion gen snippets -e intellij -o filename.xml
 
 ## Contributions
 
-Is there a feature that you'd like to see implemented in Fusion? Feel free to open a [Feature Request](https://github.com/SlalomBuild/fusion/issues/new?assignees=&labels=enhancement&template=feature_request.yml&title=%28short+issue+description%29) issue to let us know what you'd like to see! 
-We encourage submitting [Pull Requests](https://github.com/SlalomBuild/fusion/pulls) directly to add terraform resources to the library
+Is there a feature that you'd like to see implemented in Fusion? Feel free to open a [Feature Request](https://github.com/slalombuild/fusion/issues/new?assignees=&labels=enhancement&template=feature_request.yml&title=%28short+issue+description%29) issue to let us know what you'd like to see! 
+We encourage submitting [Pull Requests](https://github.com/slalombuild/fusion/pulls) directly to add terraform resources to the library
 
 For detailed development instructions, view our [DEVELOPMENT](.github/DEVELOPMENT.md) and [CONTRIBUTING](.github/CONTRIBUTING.md) guidelines.

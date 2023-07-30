@@ -1,8 +1,8 @@
 package awscmd
 
 import (
-	commands "github.com/SlalomBuild/fusion/internal/commands"
-	"github.com/SlalomBuild/fusion/templates/aws/stacks"
+	commands "github.com/slalombuild/fusion/internal/commands"
+	"github.com/slalombuild/fusion/templates/aws/stacks"
 )
 
 // NewAWSServerlessWebsiteCmd creates a new ServerlessWebsite

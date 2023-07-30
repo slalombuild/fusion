@@ -3,7 +3,7 @@
 # resolver
 
 ```go
-import "github.com/SlalomBuild/fusion/internal/resolver"
+import "github.com/slalombuild/fusion/internal/resolver"
 ```
 
 ## Index
@@ -37,7 +37,7 @@ func main() {
 var JSONFileMapper = kong.MapperFunc(decodeJSONFile)
 ```
 
-## func [JSON](<https://github.com/SlalomBuild/fusion/blob/main/internal/resolver/json.go#L42>)
+## func [JSON](<https://github.com/slalombuild/fusion/blob/main/internal/resolver/json.go#L42>)
 
 ```go
 func JSON(r io.Reader) (kong.Resolver, error)
