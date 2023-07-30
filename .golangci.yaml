@@ -24,10 +24,13 @@ linters-settings:
     ignorePackageGlobs:
     - github.com/slalombuild/fusion/*
   depguard:
-    include-go-root: true
-    packages-with-error-message:
-    - log: 'logging is allowed only by github.com/rs/zerolog/log'
-    - github.com/tj/assert: 'assert is allowed only by github.com/stretchr/testify/assert'
+    rules:
+      main:
+        deny:
+        - pkg: 'log'
+          desc: 'logging is allowed only by github.com/rs/zerolog/log'
+        - pkg: github.com/tj/assert
+          desc: 'assert is allowed only by github.com/stretchr/testify/assert'
   gomodguard:
     blocked:
       modules:
