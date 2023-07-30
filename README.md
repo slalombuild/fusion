@@ -16,16 +16,16 @@ If you have Go setup on your system, you can install fusion with `go install`
 
 ```shell
 go install github.com/slalombuild/fusion/cmd/fusion@latest
+
+# Optionally install the fusionctl dev tool
+go install github.com/slalombuild/fusion/cmd/fusionctl@latest
 ```
 
 ### Homebrew
 
 ```shell
-brew tap slalombuild/fusion
+brew tap slalombuild/fusion https://github.com/slalombuild/fusion
 brew install fusion
-
-# Optionally install the fusionctl dev tool
-brew install fusionctl
 ```
 
 ### Scoop
