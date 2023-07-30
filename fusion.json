@@ -1,21 +1,19 @@
 {
-    "version": "0.2.4",
+    "version": "0.2.5",
     "architecture": {
         "32bit": {
-            "url": "https://github.com/slalombuild/fusion/releases/download/v0.2.4/fusion_0.2.4_windows_386.tar.gz",
+            "url": "https://github.com/slalombuild/fusion/releases/download/v0.2.5/fusion_0.2.5_windows_386.tar.gz",
             "bin": [
-                "fusion.exe",
-                "fusionctl.exe"
+                "fusion.exe"
             ],
-            "hash": "319db849465e37165f33544de5e95b8b9cf7936eeec2ccaa4639159a44e26be3"
+            "hash": "f2769de0adb13ab57119937f4af2d657a0518849ea56321a1e881bd9d3618186"
         },
         "64bit": {
-            "url": "https://github.com/slalombuild/fusion/releases/download/v0.2.4/fusion_0.2.4_windows_amd64.tar.gz",
+            "url": "https://github.com/slalombuild/fusion/releases/download/v0.2.5/fusion_0.2.5_windows_amd64.tar.gz",
             "bin": [
-                "fusion.exe",
-                "fusionctl.exe"
+                "fusion.exe"
             ],
-            "hash": "9a0c4fdea26855ee8fc737a57bab8369c319be620ef7bab9d536d68f3932624b"
+            "hash": "37e5a51719df95459c073a49cb57dc450317dc2f82d940aa079bf5febb70b643"
         }
     }
 }
