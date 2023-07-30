@@ -5,47 +5,43 @@
 class Fusion < Formula
   desc "Generate secure by default cloud infrastructure configuration with Go and Terraform"
   homepage "https://github.com/slalombuild/fusion"
-  version "0.2.4"
+  version "0.2.5"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/slalombuild/fusion/releases/download/v0.2.4/fusion_0.2.4_darwin_amd64.tar.gz"
-      sha256 "8d51fe5b1638b7674233fd10c915d2dfe114e2ac452247a02724b8522a54a1a0"
+      url "https://github.com/slalombuild/fusion/releases/download/v0.2.5/fusion_0.2.5_darwin_amd64.tar.gz"
+      sha256 "0ef966b1765868d9dc76a1cd86b011f826cba294ad3e3093dac014ef50063780"
 
       def install
         bin.install "fusion"
-        bin.install "fusionctl"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/slalombuild/fusion/releases/download/v0.2.4/fusion_0.2.4_darwin_arm64.tar.gz"
-      sha256 "15cd5ee37c61fbb9086cb631f120535f2e32a9507726f66b2b5fbbb2343b8c6f"
+      url "https://github.com/slalombuild/fusion/releases/download/v0.2.5/fusion_0.2.5_darwin_arm64.tar.gz"
+      sha256 "8a8811537d6aba309bb5d6da3755e7f6e6f4cfbd2639298e8ff76518c65a08ed"
 
       def install
         bin.install "fusion"
-        bin.install "fusionctl"
       end
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/slalombuild/fusion/releases/download/v0.2.4/fusion_0.2.4_linux_amd64.tar.gz"
-      sha256 "017c8c232543e97eb75dd851e62e894a0cd876050271c8623db781b677a5ad24"
+      url "https://github.com/slalombuild/fusion/releases/download/v0.2.5/fusion_0.2.5_linux_amd64.tar.gz"
+      sha256 "632fd01156bd7887e919ab4239c0777a0a5e31506693b54775a26c87c67e1516"
 
       def install
         bin.install "fusion"
-        bin.install "fusionctl"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/slalombuild/fusion/releases/download/v0.2.4/fusion_0.2.4_linux_arm64.tar.gz"
-      sha256 "aab985144beef3904095537c9fee86cc3cd76567df6094e13b8f881631064eb9"
+      url "https://github.com/slalombuild/fusion/releases/download/v0.2.5/fusion_0.2.5_linux_arm64.tar.gz"
+      sha256 "8337478f3888c6b8a696aafdcf618651c9721fd409b4563012d2c09040bb41ce"
 
       def install
         bin.install "fusion"
-        bin.install "fusionctl"
       end
     end
   end
