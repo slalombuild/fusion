@@ -7,7 +7,7 @@
 
 ```shell
 # Create a new default lambda
-fusion new aws lambda
+fusion new aws resource lambda
 ```
 
 ## Output
@@ -34,13 +34,13 @@ EOF
 }
 
 resource "aws_lambda_function" "my_lambda" {
-  filename         = "foo.zip"
-  function_name    = "MyLambda"
+  filename         = "my_lambda.zip"
+  function_name    = "my_lambda"
   role             = aws_iam_role.iam_for_lambda.arn
-  handler          = "handler.index"
-  source_code_hash = filebase64sha256("foo.zip")
+  handler          = "handler.index.js"
+  source_code_hash = filebase64sha256("my_lambda.zip")
 
-  runtime = "NODE_14.x"
+  runtime = "nodejs14.x"
 
   environment {
     variables = {}

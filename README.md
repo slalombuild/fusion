@@ -48,19 +48,23 @@ Getting started with fusion is as simple as naming the type of cloud resource yo
 See available commands with `--help`
 
 ```
-fusion —help
+fusion —-help
 
 Usage: fusion <command>
 
 Generate secure by default cloud infrastructure configuration
 
 Flags:
-  -h, --help        Show context-sensitive help.
-  -v, --verbose     Enable verbose logging
-  -n, --no-color    Disable colorful output ($NO_COLOR)
+  -h, --help                  Show context-sensitive help.
+      --version               Show version information
+  -v, --verbose               Enable verbose logging
+  -n, --no-color              Disable colorful output ($NO_COLOR)
+      --no-format             Disable code formatting ($NO_FORMAT)
+      --config=CONFIG-FLAG    Provide a JSON file which will populate flags and their values
 
 Commands:
   new    Create new cloud resources with Terraform
+  gen    Generate snippets and shell completions
 
 Run "fusion <command> --help" for more information on a command.
 ```
